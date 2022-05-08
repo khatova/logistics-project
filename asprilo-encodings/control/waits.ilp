@@ -1,3 +1,0 @@
-#program step(t).
-
-waits(R,t) :- not move(R,_,t), isRobot(R).
