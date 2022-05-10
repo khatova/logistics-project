@@ -1,0 +1,1 @@
+ clingo --out-atomf='%s.' -V0 -c horizon=15 instances/x2y3r1s1_1.lp instances/x2y3r1s1_2.lp merger_traffic.lp
