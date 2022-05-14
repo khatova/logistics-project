@@ -49,8 +49,8 @@ move_(R,(0,0),T+1) :- vertical_conflict(R,(X,Y),_,_,T), move(R,(0,-1),T+1), bord
 
 
 % return back to the plan
-move_(R,D,T+2) :- move(R,D,T+1), conflict(R,T).
-move_(R,(-D1,-D2),T+3) :- move_(R,(D1,D2),T+1), conflict(R,T).
+move_(R,D,T+2+C*2) :- move(R,D,T+1), conflict(R,T), conflicted(R,C,T-1).
+move_(R,(-D1,-D2),T+3+C*2) :- move_(R,(D1,D2),T+1), conflict(R,T), conflicted(R,C,T-1).
 
 % Show output
 #show.
