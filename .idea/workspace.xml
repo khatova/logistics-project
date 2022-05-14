@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/merger_traffic.lp" beforeDir="false" afterPath="$PROJECT_DIR$/merger_traffic.lp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plans/merged/x2y3r2s2p2_traffic_plan.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/merged/x2y3r2s2p2_traffic_plan.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/original/plan_x3y2r1s2p2_1_original.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/original/plan_x3y2r1s2p2_1_original.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/original/plan_x3y2r1s2p2_2_original.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/original/plan_x3y2r1s2p2_2_original.lp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +20,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="28r8FYGfgsYQL09V5JJMVfuELC1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -103,7 +109,10 @@
       <workItem from="1651963244531" duration="33000" />
       <workItem from="1652016629098" duration="1811000" />
       <workItem from="1652155701111" duration="19000" />
-      <workItem from="1652155995738" duration="21132000" />
+      <workItem from="1652155995738" duration="21185000" />
+      <workItem from="1652372246075" duration="4646000" />
+      <workItem from="1652477266588" duration="81000" />
+      <workItem from="1652503879502" duration="1864000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
@@ -128,6 +137,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New version run_clingo with visualizer" />
