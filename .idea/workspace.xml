@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="New version run_clingo with visualizer">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merger_traffic.lp" beforeDir="false" afterPath="$PROJECT_DIR$/merger_traffic.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/merged/x2y3r2s2p2_traffic_plan.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/merged/x2y3r2s2p2_traffic_plan.lp" afterDir="false" />
-    </list>
+    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="New version run_clingo with visualizer" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +108,7 @@
       <workItem from="1652155995738" duration="21185000" />
       <workItem from="1652372246075" duration="4646000" />
       <workItem from="1652477266588" duration="81000" />
-      <workItem from="1652503879502" duration="1864000" />
+      <workItem from="1652503879502" duration="2158000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
