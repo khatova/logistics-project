@@ -2,20 +2,34 @@
 
 import os, sys, getopt, argparse
 
-def run(input_plans,merger,output_plan,action,conflicts_detector,input_parser,output_format):
-    command = "".join(["clingo --out-atomf='%s.' -V0 -c horizon=15  ",input_plans," ",conflicts_detector," ",merger," ",action," ",input_parser," ",output_format," > ",output_plan])
-    print("Command: {}".format(command))
-
-    stream = os.popen(command)
-    output = stream.read()
-    if output == "" or output == None:
-        print("Command runned without output")
+def run(directory, output_plan,action,conflicts_detector,input_parser,output_format):
+    dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
+    if directory not in dirs:
+        print("Directory not found. Please select one of these options: ")
+        print(dirs)
+        sys.exit(0)
     else:
-        print("Command runned with output... : {}".format(output))
+        command = "clingo --out-atomf='%s.' -V0 -c horizon=15 "
+        path = "plans/"+directory+"/"
+        files = os.listdir(path)
+        for f in files:
+            if 'solution' in f:
+                continue
+            command += path + f + " "
+        command += input_parser + " " + action + " " + conflicts_detector + " " + output_format + " > " + output_plan
+        print("Command: {}".format(command))
+
+        stream = os.popen(command)
+        output = stream.read()
+        if output == "" or output == None:
+            print("Command runned without output")
+        else:
+            print("Command runned with output... : {}".format(output))
 
 def aesthetic(location):
     with open(location, 'r+') as file:
         lines = file.readlines()
+        #TODO: Remove each optimization line
         if 'SATISFIABLE' in lines:
             lines.remove('SATISFIABLE')
         elif 'SATISFIABLE\n' in lines:
@@ -26,6 +40,7 @@ def aesthetic(location):
             for rule in rules:
                 rule = rule.replace("'","")
                 file.write(rule + "\n")
+
 
 def visualize(plan):
     command = "".join(["viz  -p ",plan])
@@ -41,19 +56,17 @@ def visualize(plan):
 def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
 
-    input_plans = 'plans/original/{plan_1_original.lp,plan_2_original.lp}'
-    merger = "merger.lp"
-    output_plan = 'plans/merged/out_plan.lp'
+    directory = 'original'
 
-    action = 'action.lp'
-    conflicts_detector = 'conflicts_detector.lp'
-    input_parser = 'asprilo_output_to_input.lp'
-    output_format = 'merger_output.lp'
+    input_parser = 'A_output_to_input.lp'
+    action = 'B_action.lp'
+    conflicts_detector = 'C_conflicts_detector.lp'
+    output_format = 'D_output.lp'
 
-    help_line = 'run_clingo.py -i <input_plans> -o <output_plans> -m <merger> -a <action> -c <conflicts_detector> -p <input_parser> -f <output_format>'
+    help_line = 'run_clingo.py -i <input_plans> -o <output_plans> -a <action> -c <conflicts_detector> -p <input_parser> -f <output_format>'
 
     try:
-        opts, args = getopt.getopt(argv,"hi:o:m:c:p:f:")
+        opts, args = getopt.getopt(argv,"h:d:a:c:p:f:")
     except getopt.GetoptError:
         print(help_line)
         sys.exit(2)
@@ -61,12 +74,8 @@ def main(argv):
         if opt == '-h':
             print(help_line)
             sys.exit()
-        elif opt == '-i':
-            input_plans = arg
-        elif opt == "-o":
-            output_plan = arg
-        elif opt == '-m':
-            merger = arg
+        elif opt == '-d':
+            directory = arg
         elif opt == '-a':
             action = arg
         elif opt == '-c':
@@ -76,13 +85,13 @@ def main(argv):
         elif opt == '-f':
             output_format = arg
 
-    run(input_plans,merger,output_plan,action,conflicts_detector,input_parser,output_format)
+    output_plan = "plans/" + directory + "/"+directory +"_solution.lp"
+    print("Directory: {}".format(directory))
+    print("Output_plan: {}".format(output_plan))
+
+    run(directory, output_plan, action,conflicts_detector,input_parser,output_format)
     aesthetic(output_plan)
     visualize(output_plan)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-
-    
-
-    
