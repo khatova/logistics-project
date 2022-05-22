@@ -63,7 +63,7 @@ def main(argv):
     conflicts_detector = 'C_conflicts_detector.lp'
     output_format = 'D_output.lp'
 
-    help_line = 'run_clingo.py -i <input_plans> -o <output_plans> -a <action> -c <conflicts_detector> -p <input_parser> -f <output_format>'
+    help_line = 'run_clingo.py -d <directory> -a <action> -c <conflicts_detector> -p <input_parser> -f <output_format>'
 
     try:
         opts, args = getopt.getopt(argv,"h:d:a:c:p:f:")
