@@ -28,7 +28,8 @@ def split(plan_all, output_folder, output_name):
 
 def run(instance,output_folder,output_name,horizon):
     asprilo_path = "asprilo-encodings/m/{action-M-no-constraints.lp,goal-M.lp,output-M.lp}"
-    output_temp = os.path.join(output_folder, output_name + '_temp.lp')
+    output_temp = os.path.join(output_folder, output_name + '_conflicts.lp')
+    # TODO: mkdir
 
     command = "clingo --out-atomf='%s.' -V0 -c horizon="
     command = command + horizon+" "+asprilo_path+" "+instance+" > "+output_temp
@@ -51,7 +52,6 @@ def run(instance,output_folder,output_name,horizon):
                 file.write(rule + "\n")
 
     split(output_temp, output_folder, output_name)
-    os.remove(output_temp)
 
 
 def main(argv):
