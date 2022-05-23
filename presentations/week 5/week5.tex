@@ -1,0 +1,45 @@
+\documentclass{beamer}
+\graphicspath{ {img/} }
+
+%Information to be included in the title page:
+\title{MAPF project}
+\author{Andrés Córdova and Aleksandra Khatova}
+\institute{Unversity of Potsdam}
+\date{2022}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Our goal: warehouse-like instance}
+Rectangular grid layout, many shelves, many robots
+\centering
+\includegraphics[scale=0.3]{med_dense.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Automated creation of separate plans for each robot using asprilo}
+python make\_original\_plans.py -i instance -o output\_folder -n name\_prefix
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Further work}
+\begin{itemize} 
+\item<1-> Decide on global strategy
+\item<2-> Make a working implementation for a downscaled instance
+\end{itemize} 
+\end{frame}
+
+
+
+\end{document}
