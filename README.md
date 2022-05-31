@@ -11,17 +11,33 @@ We use individual robot plans created by asprilo and merge them in order to reso
 To use our merger, you have to:
 1. Install asprilo (follow instructions in https://github.com/potassco/asprilo-seminar).
 2. Install visualizer (follow instructions in https://github.com/potassco/asprilo-seminar).
-3. Generate an instance and create separate plans for all robots using asprilo.
-4. Launch merger:
+3. Generate an instance
 ```
-python run_clingo.py -i "plans/line/{line_plan_x5y2r2s2p2_1.lp,line_plan_x5y2r2s2p2_2.lp}" -m "merger_line.lp" -o "plans/line/x5y2r2s2p2_merged.lp"
+gen -x 20 -y 20 -X 5 -Y 2 -s 40 -p 1 -r 40 -H -P 40 -u 40 -o 40 --prs 1 --pus 1 -t 4 -V -I
 ```
--i : input plans\
--m : merger (omit to use the default merger)\
--o : output merged plan\
-For more info, run 
+4. Create separate plans for all robots:
+```
+python make_original_plans.py -i instances/med_dense_x20_y20_n400_r40_s40_ps1_pr40_u40_o40_l40_N001.lp -o plans/medium_dense -n med_dense_x20_y20_n400_r40_s40_ps1_pr40_u40_o40_l40_N001  --horizon=30
+```
+Options:
+```
+-i : input instance
+-o : output folder
+-n : output name prefix
+--horizon : horizon
+```
+
+5. Launch merger and visualize the result:
+```
+python run_clingo.py -d "plans/medium_dense" -m "merger_traffic.lp"
+```
+Options:
+
+```
+-d : directory containing input plans
+-m : merger (omit to use the default merger)
+```
+For more info and additional options, run 
 ```
 python run_clingo.py -h
 ```
-
-This command will try to merge plans and show the result in the visualizer.
