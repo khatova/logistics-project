@@ -2,15 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="New version run_clingo with visualizer">
-      <change afterPath="$PROJECT_DIR$/generator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/line/merger_line.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clustering.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/independence_day.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/independence_detector.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instances/conflicts.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_1.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_10.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_11.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_12.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_13.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_14.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_15.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_16.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_17.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_18.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_19.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_2.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_20.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_3.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_4.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_5.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_6.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_7.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_8.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_9.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_conflicts.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/medium_independencies_solution.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium_backup/medium_solution.lp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/action.lp" beforeDir="false" afterPath="$PROJECT_DIR$/B_action.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asprilo_output_to_input.lp" beforeDir="false" afterPath="$PROJECT_DIR$/A_output_to_input.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conflicts_detector.lp" beforeDir="false" afterPath="$PROJECT_DIR$/C_conflicts_detector.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merger_output.lp" beforeDir="false" afterPath="$PROJECT_DIR$/D_output.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/line/x5y2r2s2p2_merged.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/line/x5y2r2s2p2_merged_solution.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_clingo.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_clingo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_10.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_12.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_13.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_15.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_19.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_6.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_8.lp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +71,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/plans/line" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/plans" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -54,6 +80,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans" />
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\line" />
     </key>
   </component>
@@ -174,7 +201,11 @@
       <workItem from="1653071849533" duration="2505000" />
       <workItem from="1653075821880" duration="317000" />
       <workItem from="1653076171992" duration="5271000" />
-      <workItem from="1653115578075" duration="6182000" />
+      <workItem from="1653115578075" duration="6431000" />
+      <workItem from="1653252704601" duration="1025000" />
+      <workItem from="1653300631124" duration="2212000" />
+      <workItem from="1653636466093" duration="842000" />
+      <workItem from="1654669462536" duration="9968000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
