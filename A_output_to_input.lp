@@ -1,7 +1,7 @@
 #include "asprilo-encodings/input.lp".
 
-time(1..horizon).
-time_(T) :- occurs(_,_,T).
+time(1..horizon). % output time
+time_(T) :- occurs(_,_,T). % input time
 
 % translates occurs into position and move
 move(R,(DX,DY),T) :- occurs(object(robot,R),action(move,(DX,DY)),T).
