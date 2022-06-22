@@ -2,7 +2,7 @@
 
 import os, sys, getopt, argparse
 
-def run(directory, output_plan,action,merger,conflicts_detector,input_parser,output_format):
+def run(directory, output_plan,action,merger,conflicts_detector, independencies_solution,input_parser,output_format):
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
     if directory not in dirs:
         print("Directory not found. Please select one of these options: ")
@@ -12,11 +12,24 @@ def run(directory, output_plan,action,merger,conflicts_detector,input_parser,out
         command = "clingo --out-atomf='%s.' -V0 -c horizon=15 "
         path = os.path.join("plans/",directory)
         files = os.listdir(path)
+        print("DEBUG: 1 {}".format(merger))
         for f in files:
-            if ('solution' in f) or ('conflicts' in f) or ('cluster' in f) or f == ".DS_Store":
+            if 'merger' in f and merger == '':
+                merger = os.path.join(path,f)
+            if 'independencies_solution' in f and independencies_solution == '':
+                independencies_solution = os.path.join(path,f)
+            if ('solution' in f) or ('conflicts' in f) or f == ".DS_Store":
                 continue
-            command += os.path.join(path,f) + " "
-        command += input_parser + " " + merger + " " + action + " " + conflicts_detector + " " + output_format + " > " + output_plan
+            if 'cluster' in f:
+                cluster_path = os.path.join(path, f)
+                cluster_files = os.listdir(cluster_path)
+                for cf in cluster_files:
+                    command += os.path.join(cluster_path,cf) + " "
+        print("DEBUG: 2 {}".format(merger))
+        #print("Command: {}".format(command))
+        # Files: Input, independence_solution, Merger, action, output , + independencies_solution + " "
+        command += input_parser + " " + merger + " " + action + " " + conflicts_detector + " " +independencies_solution +" "+ output_format + " > " + output_plan
+        #command += input_parser + " " + action +" " + output_format + "" +" > " + output_plan
         print("Command: {}".format(command))
 
         stream = os.popen(command)
@@ -61,13 +74,14 @@ def main(argv):
     input_parser = 'A_output_to_input.lp'
     action = 'B_action.lp'
     conflicts_detector = 'C_conflicts_detector.lp'
+    independencies_solution = ''
     output_format = 'D_output.lp'
     merger = ''
 
     help_line = 'run_clingo.py -d <directory> -m <merger> -a <action> -c <conflicts_detector> -p <input_parser> -f <output_format>'
 
     try:
-        opts, args = getopt.getopt(argv,"hd:m:a:c:p:f:")
+        opts, args = getopt.getopt(argv,"hd:m:a:c:i:p:f:")
     except getopt.GetoptError:
         print(help_line)
         sys.exit(2)
@@ -83,6 +97,8 @@ def main(argv):
             action = arg
         elif opt == '-c':
             conflicts_detector = arg
+        elif opt == '-c':
+            independencies_solution = arg
         elif opt == '-p':
             input_parser = arg
         elif opt == '-f':
@@ -92,7 +108,7 @@ def main(argv):
     print("Directory: {}".format(directory))
     print("Output_plan: {}".format(output_plan))
 
-    run(directory, output_plan, action, merger, conflicts_detector,input_parser,output_format)
+    run(directory, output_plan, action, merger, conflicts_detector, independencies_solution, input_parser,output_format)
     aesthetic(output_plan)
     visualize(output_plan)
 

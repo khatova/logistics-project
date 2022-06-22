@@ -1,42 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="New version run_clingo with visualizer">
-      <change afterPath="$PROJECT_DIR$/clustering.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/independence_day.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/independence_detector.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/instances/conflicts.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_1.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_10.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_11.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_12.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_13.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_14.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_15.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_16.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_17.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_18.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_19.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_2.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_20.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_3.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_4.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_5.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_6.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_7.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_8.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_9.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_conflicts.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/medium_independencies_solution.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/medium_backup/medium_solution.lp" afterDir="false" />
+    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="very simple independece detector (1 cluster)">
+      <change afterPath="$PROJECT_DIR$/bad_merger.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/medium/merger_medium.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run_clingo_clusters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_10.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_12.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_13.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_15.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_19.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_6.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_8.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_conflicts_detector.lp" beforeDir="false" afterPath="$PROJECT_DIR$/C_conflicts_detector.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/clustering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/independence_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/independence_day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/independence_detector.lp" beforeDir="false" afterPath="$PROJECT_DIR$/independence_detector.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/medium/medium_solution.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/medium/medium_solution.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/traffic/plan_x3y2r1s2p2_1_original.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/traffic/plan_x3y2r1s2p2_1_original.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_clingo.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_clingo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/plans" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/plans/medium" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -80,8 +56,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\medium" />
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project" />
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans" />
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\line" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\medium" />
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project" />
     </key>
   </component>
   <component name="RunManager" selected="Python.desk">
@@ -205,7 +187,11 @@
       <workItem from="1653252704601" duration="1025000" />
       <workItem from="1653300631124" duration="2212000" />
       <workItem from="1653636466093" duration="842000" />
-      <workItem from="1654669462536" duration="9968000" />
+      <workItem from="1654669462536" duration="11309000" />
+      <workItem from="1655034238694" duration="6230000" />
+      <workItem from="1655309201944" duration="1722000" />
+      <workItem from="1655651690822" duration="10670000" />
+      <workItem from="1655900977864" duration="433000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
@@ -214,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652209152029</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="very simple independece detector (1 cluster)">
+      <created>1654694367201</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654694367201</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +227,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New version run_clingo with visualizer" />
-    <option name="LAST_COMMIT_MESSAGE" value="New version run_clingo with visualizer" />
+    <MESSAGE value="very simple independece detector (1 cluster)" />
+    <option name="LAST_COMMIT_MESSAGE" value="very simple independece detector (1 cluster)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/logistics_project$run_clingo.coverage" NAME="run_clingo Coverage Results" MODIFIED="1652198449344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
