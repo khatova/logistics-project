@@ -1,38 +1,17 @@
 #!/usr/bin/python
 
-import os, sys, getopt, argparse, re
-
-def split(plan_all, output_folder, output_name):
-    all_plans = ""
-    robots = {}
-    with open(plan_all, 'r+') as file:
-        lines = file.readlines()
-        if 'SATISFIABLE\n' in lines:
-            lines.remove('SATISFIABLE\n')
-        for line in lines:
-            m = re.search(r'occurs\(object\(robot,(\d*)', line)
-            if m:
-                r = m.group(1)
-                robot = robots.pop(r,"")
-                robot = robot + line
-                robots[r] = robot
-            else:
-                all_plans = all_plans + line
-
-    for r in robots.keys():
-        r_file = os.path.join(output_folder, output_name + '_' + r + '.lp')
-        with open(r_file, "w") as file:
-            file.write(all_plans)
-            file.write(robots[r])
+import os, sys, getopt, argparse
 
 
 def run(instance,output_folder,output_name,horizon):
-    asprilo_path = "asprilo-encodings/m/{action-M-no-constraints.lp,goal-M.lp,output-M.lp}"
+    action_path = "asprilo-encodings/m/action-M.lp"
+    goal_path = "asprilo-encodings/m/goal-M.lp"
+    out_path = "asprilo-encodings/m/output-M.lp"
     output_temp = os.path.join(output_folder, output_name + '_conflicts.lp')
     # TODO: mkdir
 
     command = "clingo --out-atomf='%s.' -V0 -c horizon="
-    command = command + str(horizon)+" "+asprilo_path+" "+instance+" > "+output_temp
+    command = command + str(horizon)+" "+action_path+" "+goal_path+" "+out_path +" "+instance+" > "+output_temp
     print("Command: {}".format(command))
 
     stream = os.popen(command)
@@ -51,7 +30,31 @@ def run(instance,output_folder,output_name,horizon):
                 rule = rule.replace("'","")
                 file.write(rule + "\n")
 
-    split(output_temp, output_folder, output_name)
+def aesthetic(location):
+    with open(location, 'r+') as file:
+        lines = file.readlines()
+        #TODO: Remove each optimization line
+        if 'SATISFIABLE' in lines:
+            lines.remove('SATISFIABLE')
+        elif 'SATISFIABLE\n' in lines:
+            lines.remove('SATISFIABLE\n')
+    with open(location, "w") as file:
+        for line in lines:
+            rules = line.split()
+            for rule in rules:
+                rule = rule.replace("'","")
+                file.write(rule + "\n")
+
+def visualize(plan):
+    command = "".join(["viz  -p ",plan])
+    print("Command: {}".format(command))
+
+    stream = os.popen(command)
+    output = stream.read()
+    if output == "" or output == None:
+        print("Command runned without output")
+    else:
+        print("Command runned with output... : {}".format(output))
 
 
 def main(argv):
@@ -83,6 +86,9 @@ def main(argv):
             horizon = arg
 
     run(instance,output_folder,output_name,horizon)
+    output = os.path.join(output_folder, output_name + '_conflicts.lp')
+    aesthetic(output)
+    visualize(output)
 
 
 if __name__ == "__main__":
