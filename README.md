@@ -8,6 +8,10 @@ To make youreslf familiar with asprilo, you can use these exercises: https://git
 
 We use individual robot plans created by asprilo and merge them in order to resolve conflicts. At this moment, we are working in non-autonomous domain of MAPF. For the simplicity, for now, we are working in M-domain only (movement only, see detailed description here: https://asprilo.github.io/specification/).
 
+Our approach is based on two following papers:
+1) "Finding Optimal Solutions to Cooperative Pathfinding Problems" (Standley, 2010): https://www.cs.huji.ac.il/~jeff/aaai10/02/AAAI10-039.pdf
+2) "MAPP: a Scalable Multi-Agent Path Planning Algorithm with Tractability and Completeness Guarantees" (Wang and Botea, 2011): https://arxiv.org/abs/1401.3905
+
 To use our merger, you have to:
 1. Install asprilo (follow instructions in https://github.com/potassco/asprilo-seminar).
 2. Install visualizer (follow instructions in https://github.com/potassco/asprilo-seminar).
