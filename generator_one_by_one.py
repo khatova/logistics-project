@@ -3,7 +3,9 @@ from rule import Rule
 import sys
 import argparse, getopt
 import random
-from utils import visualize
+from utils import empty_folder, aesthetic, visualize
+from merge_plans import merge_plans
+from make_plans import run, aesthetic
 
 def get_random_tuple(x,y,robot=False):
     if robot:
@@ -14,7 +16,7 @@ def get_random_tuple(x,y,robot=False):
         j = random.randint(2, y - 2)
     return (i,j)
 
-def rules_generator(x=5,y=5,n_agents=2):
+def rules_generator(x=5,y=5,id_of_agent=1):
     used_cells = []
     rules = []
     count = 0
@@ -25,24 +27,23 @@ def rules_generator(x=5,y=5,n_agents=2):
             rules.append(rule.to_string())
 
     count = 0
-    for a in range(n_agents):
-        count += 1
-        rule1 = Rule('robot',a+1,'max_energy',0)
-        rule2 = Rule('robot',a+1,'energy',0)
-        rule3 = Rule('product',a+1,'on',(a+1,1))
+    count += 1
+    rule1 = Rule('robot',id_of_agent,'max_energy',0)
+    rule2 = Rule('robot',id_of_agent,'energy',0)
+    rule3 = Rule('product',id_of_agent,'on',(id_of_agent,1))
+    shelf_tuple = get_random_tuple(x,y)
+    while shelf_tuple in used_cells:
         shelf_tuple = get_random_tuple(x,y)
-        while shelf_tuple in used_cells:
-            shelf_tuple = get_random_tuple(x,y)
-        used_cells.append(shelf_tuple)
-        rule4 = Rule('shelf',a+1,'at',shelf_tuple)
-        robot_tuple = get_random_tuple(x, y,robot=True)
-        while robot_tuple in used_cells:
-            robot_tuple = get_random_tuple(x, y, robot= True)
-        used_cells.append(robot_tuple)
-        rule5 = Rule('robot', a + 1, 'at', robot_tuple)
-        rule6 = Rule('order',count,'line',((a+1),1))
-        for ru in [rule1, rule2, rule3,rule4,rule5,rule6]:
-            rules.append(ru.to_string())
+    used_cells.append(shelf_tuple)
+    rule4 = Rule('shelf',id_of_agent,'at',shelf_tuple)
+    robot_tuple = get_random_tuple(x, y,robot=True)
+    while robot_tuple in used_cells:
+        robot_tuple = get_random_tuple(x, y, robot= True)
+    used_cells.append(robot_tuple)
+    rule5 = Rule('robot', id_of_agent, 'at', robot_tuple)
+    rule6 = Rule('order',count,'line',(id_of_agent,1))
+    for ru in [rule1, rule2, rule3,rule4,rule5,rule6]:
+        rules.append(ru.to_string())
 
     rule = Rule('pickingStation',1,'at',(int((x+1)/2),1))
     rules.append(rule.to_string())
@@ -84,15 +85,23 @@ def main(argv):
         print("Directory not found. Please select one of these options: ")
         print(dirs)
         sys.exit(0)
-    output = os.path.join("plans/", directory, directory + "_nonanonymous_instance.lp")
+    output = os.path.join("plans/", directory)
     print("Directory: {}".format(directory))
     print("Output: {}".format(output))
 
-    rules = rules_generator(x,y,n_agents)
-    with open(output,'w') as file:
-        file.writelines(rules)
-    if vis == True:
-        visualize(output)
+    path = os.path.join("plans/", directory)
+    empty_folder(path)
+    for id in range(n_agents):
+        rules = rules_generator(x,y,id+1)
+        temp_out = os.path.join(path,'instance_nona_'+str(id+1)+'.lp')
+        with open(temp_out,'w') as file:
+            file.writelines(rules)
+        run(temp_out, path, 'plan_only_'+str(id+1), 30)
+        aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'_conflicts.lp'))
+
+    merge_plans(directory=path,output_name='merged_plans.lp')
+
+    visualize(os.path.join(path,'merged_plans.lp'))
 
 if __name__ == "__main__":
     main(sys.argv[1:])

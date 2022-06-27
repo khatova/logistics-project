@@ -133,25 +133,10 @@ init(object(node,132),value(at,(12, 9))).
 init(object(node,133),value(at,(13, 9))).
 init(object(node,134),value(at,(14, 9))).
 init(object(node,135),value(at,(15, 9))).
-init(object(node,136),value(at,(1, 10))).
-init(object(node,137),value(at,(2, 10))).
-init(object(node,138),value(at,(3, 10))).
-init(object(node,139),value(at,(4, 10))).
-init(object(node,140),value(at,(5, 10))).
-init(object(node,141),value(at,(6, 10))).
-init(object(node,142),value(at,(7, 10))).
-init(object(node,143),value(at,(8, 10))).
-init(object(node,144),value(at,(9, 10))).
-init(object(node,145),value(at,(10, 10))).
-init(object(node,146),value(at,(11, 10))).
-init(object(node,147),value(at,(12, 10))).
-init(object(node,148),value(at,(13, 10))).
-init(object(node,149),value(at,(14, 10))).
-init(object(node,150),value(at,(15, 10))).
-init(object(robot,1),value(max_energy,0)).
-init(object(robot,1),value(energy,0)).
-init(object(product,1),value(on,(1, 1))).
-init(object(shelf,1),value(at,(5, 2))).
-init(object(robot,1),value(at,(5, 10))).
-init(object(order,1),value(line,(1, 1))).
+init(object(robot,6),value(max_energy,0)).
+init(object(robot,6),value(energy,0)).
+init(object(product,6),value(on,(6, 1))).
+init(object(shelf,6),value(at,(12, 2))).
+init(object(robot,6),value(at,(8, 9))).
+init(object(order,1),value(line,(6, 1))).
 init(object(pickingStation,1),value(at,(8, 1))).

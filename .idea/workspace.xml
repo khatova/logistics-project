@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="independence bayesian">
+      <change afterPath="$PROJECT_DIR$/generator_one_by_one.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bad_merger.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asprilo-encodings/m/goal-M.lp" beforeDir="false" afterPath="$PROJECT_DIR$/asprilo-encodings/m/goal-M.lp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generator_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/independence_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/independence_day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_plans.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/merge_plans.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plans/nonanonymous/nonanonymous_nonanonymous_instance.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/nonanonymous/nonanonymous_nonanonymous_instance.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/plan_conflicts.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/nonanonymous/plan_conflicts.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_clingo.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_clingo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_clingo_clusters.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_clingo_clusters.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,6 +217,7 @@
       <workItem from="1656082500420" duration="9618000" />
       <workItem from="1656243960511" duration="3064000" />
       <workItem from="1656252193479" duration="1063000" />
+      <workItem from="1656321759603" duration="3607000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
