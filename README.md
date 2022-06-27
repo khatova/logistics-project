@@ -65,7 +65,9 @@ python run_clingo.py -h
 
 ### Extras
 For some mergers, would be convenient to work only with the conflicted robots.
-For this purpose there is an Independence Detector.
+For this purpose there is an Independence Detector followig the work of Standley, 
+“Finding Optimal Solutions to Cooperative Pathfinding Problems.”
+
 ```
 python independence_day.py -d <directory>
 ```
