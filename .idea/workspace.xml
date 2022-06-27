@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="New version run_clingo with visualizer">
-      <change afterPath="$PROJECT_DIR$/generator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/line/merger_line.lp" afterDir="false" />
+    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="independence bayesian">
+      <change afterPath="$PROJECT_DIR$/desktop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generator_file.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/make_plans.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/merge_plans.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rule.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/action.lp" beforeDir="false" afterPath="$PROJECT_DIR$/B_action.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asprilo_output_to_input.lp" beforeDir="false" afterPath="$PROJECT_DIR$/A_output_to_input.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conflicts_detector.lp" beforeDir="false" afterPath="$PROJECT_DIR$/C_conflicts_detector.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merger_output.lp" beforeDir="false" afterPath="$PROJECT_DIR$/D_output.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/line/x5y2r2s2p2_merged.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/line/x5y2r2s2p2_merged_solution.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_clingo.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_clingo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator_command.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make_original_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_original_plans.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/original/plan_x3y2r1s2p2_1_original.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/original/plan_x3y2r1s2p2_1_original.lp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/plans/line" />
+    <property name="last_opened_file_path" value="$USER_HOME$/asprilo-seminar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -54,10 +54,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project" />
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\medium" />
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans" />
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\line" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\medium" />
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.desk">
+  <component name="RunManager" selected="Python.desktop">
     <configuration name="desk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="logistics-project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -80,29 +87,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="logistics-project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\ricoc\miniconda3\envs\venv\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generator.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="plan_dresser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="desktop" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="logistics-project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -115,7 +100,51 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plan_dresser.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/desktop.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generator_command" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="logistics-project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ricoc\miniconda3\envs\venv\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\ricoc\PycharmProjects\logistics-project\generator_command.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generator_file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="logistics-project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generator_file.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,10 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.desktop" />
+        <item itemvalue="Python.generator_file" />
         <item itemvalue="Python.desk" />
-        <item itemvalue="Python.generator" />
+        <item itemvalue="Python.generator_command" />
         <item itemvalue="Python.run_clingo" />
-        <item itemvalue="Python.plan_dresser" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +204,16 @@
       <workItem from="1653071849533" duration="2505000" />
       <workItem from="1653075821880" duration="317000" />
       <workItem from="1653076171992" duration="5271000" />
-      <workItem from="1653115578075" duration="6182000" />
+      <workItem from="1653115578075" duration="6431000" />
+      <workItem from="1653252704601" duration="1025000" />
+      <workItem from="1653300631124" duration="2212000" />
+      <workItem from="1653636466093" duration="842000" />
+      <workItem from="1654669462536" duration="11309000" />
+      <workItem from="1655034238694" duration="6230000" />
+      <workItem from="1655309201944" duration="1722000" />
+      <workItem from="1655651690822" duration="10670000" />
+      <workItem from="1655900977864" duration="4342000" />
+      <workItem from="1656082500420" duration="9618000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
@@ -183,7 +222,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652209152029</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="very simple independece detector (1 cluster)">
+      <created>1654694367201</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654694367201</updated>
+    </task>
+    <task id="LOCAL-00003" summary="independence bayesian">
+      <created>1655901550924</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655901550924</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,12 +256,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New version run_clingo with visualizer" />
-    <option name="LAST_COMMIT_MESSAGE" value="New version run_clingo with visualizer" />
+    <MESSAGE value="very simple independece detector (1 cluster)" />
+    <MESSAGE value="independence bayesian" />
+    <option name="LAST_COMMIT_MESSAGE" value="independence bayesian" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/logistics_project$run_clingo.coverage" NAME="run_clingo Coverage Results" MODIFIED="1652198449344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/logistics_project$generator.coverage" NAME="generator Coverage Results" MODIFIED="1653115648188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/logistics_project$plan_dresser.coverage" NAME="plan_dresser Coverage Results" MODIFIED="1652197880675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/logistics_project$generator_file.coverage" NAME="generator_file Coverage Results" MODIFIED="1656089402000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/logistics_project$desktop.coverage" NAME="desktop Coverage Results" MODIFIED="1656101239389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/logistics_project$desk.coverage" NAME="desk Coverage Results" MODIFIED="1653117627023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
