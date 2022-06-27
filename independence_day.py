@@ -100,12 +100,11 @@ def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
 
     directory = 'original'
-    output = 'in_dependencies.lp'
 
-    help_line = 'run_clingo.py -d <directory> -o <output>'
+    help_line = 'run_clingo.py -d <directory>'
 
     try:
-        opts, args = getopt.getopt(argv,"h:d:o:")
+        opts, args = getopt.getopt(argv,"h:d:")
     except getopt.GetoptError:
         print(help_line)
         sys.exit(2)
@@ -115,8 +114,6 @@ def main(argv):
             sys.exit()
         elif opt == '-d':
             directory = arg
-        elif opt == '-o':
-            output = arg
 
     output = os.path.join("plans/", directory, directory + "_independencies_solution.lp")
     print("Directory: {}".format(directory))
