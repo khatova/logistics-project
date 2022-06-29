@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
 import os, sys, getopt, argparse
-
+from utils import aesthetic, visualize
 
 def run(instance,output_folder,output_name,horizon):
-    action_path = "asprilo-encodings/m/action-M.lp"
+    action_path = "asprilo-encodings/m/action-M-no-constraints.lp"
     goal_path = "asprilo-encodings/m/goal-M.lp"
     out_path = "asprilo-encodings/m/output-M.lp"
     output_temp = os.path.join(output_folder, output_name + '_conflicts.lp')
@@ -29,33 +29,6 @@ def run(instance,output_folder,output_name,horizon):
             for rule in rules:
                 rule = rule.replace("'","")
                 file.write(rule + "\n")
-
-def aesthetic(location):
-    with open(location, 'r+') as file:
-        lines = file.readlines()
-        #TODO: Remove each optimization line
-        if 'SATISFIABLE' in lines:
-            lines.remove('SATISFIABLE')
-        elif 'SATISFIABLE\n' in lines:
-            lines.remove('SATISFIABLE\n')
-    with open(location, "w") as file:
-        for line in lines:
-            rules = line.split()
-            for rule in rules:
-                rule = rule.replace("'","")
-                file.write(rule + "\n")
-
-def visualize(plan):
-    command = "".join(["viz  -p ",plan])
-    print("Command: {}".format(command))
-
-    stream = os.popen(command)
-    output = stream.read()
-    if output == "" or output == None:
-        print("Command runned without output")
-    else:
-        print("Command runned with output... : {}".format(output))
-
 
 def main(argv):
     parser = argparse.ArgumentParser(description='Command creates separate robot plans for a given instance.')
