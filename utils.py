@@ -35,3 +35,20 @@ def visualize(plan):
         print("Command runned without output")
     else:
         print("Command runned with output... : {}".format(output))
+
+def delete_instances(path):
+    files = os.listdir(path)
+    for file in files:
+        if 'instance' in file:
+            os.remove(os.path.join(path,file))
+
+def remove_node(path,coor):
+    with open(path, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if str(coor) in line and 'node' in line:
+                lines.remove(line)
+    with open(path, 'w') as file:
+        for line in lines:
+            line = line.replace("'", "")
+            file.write(line)

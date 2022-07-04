@@ -3,9 +3,9 @@ from rule import Rule
 import sys
 import argparse, getopt
 import random
-from utils import empty_folder, aesthetic, visualize
+from utils import empty_folder, aesthetic, visualize, delete_instances, remove_node
 from merge_plans import merge_plans
-from make_plans import run, aesthetic
+from make_plans import run
 
 def get_random_tuple(x,y,robot=False):
     if robot:
@@ -16,8 +16,7 @@ def get_random_tuple(x,y,robot=False):
         j = random.randint(2, y - 2)
     return (i,j)
 
-def rules_generator(x=5,y=5,id_of_agent=1):
-    used_cells = []
+def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells=[]):
     rules = []
     count = 0
     for j in range(y):
@@ -32,14 +31,14 @@ def rules_generator(x=5,y=5,id_of_agent=1):
     rule2 = Rule('robot',id_of_agent,'energy',0)
     rule3 = Rule('product',id_of_agent,'on',(id_of_agent,1))
     shelf_tuple = get_random_tuple(x,y)
-    while shelf_tuple in used_cells:
+    while shelf_tuple in shelf_cells.values():
         shelf_tuple = get_random_tuple(x,y)
-    used_cells.append(shelf_tuple)
+    shelf_cells[id_of_agent] = shelf_tuple
     rule4 = Rule('shelf',id_of_agent,'at',shelf_tuple)
     robot_tuple = get_random_tuple(x, y,robot=True)
-    while robot_tuple in used_cells:
+    while robot_tuple in robot_cells:
         robot_tuple = get_random_tuple(x, y, robot= True)
-    used_cells.append(robot_tuple)
+    robot_cells.append(robot_tuple)
     rule5 = Rule('robot', id_of_agent, 'at', robot_tuple)
     rule6 = Rule('order',count,'line',(id_of_agent,1))
     for ru in [rule1, rule2, rule3,rule4,rule5,rule6]:
@@ -48,7 +47,7 @@ def rules_generator(x=5,y=5,id_of_agent=1):
     rule = Rule('pickingStation',1,'at',(int((x+1)/2),1))
     rules.append(rule.to_string())
 
-    return rules
+    return rules, shelf_cells, robot_cells
 
 def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
@@ -58,7 +57,7 @@ def main(argv):
     y=5
     n_agents=2
     vis = False
-    help_line = 'run_clingo.py -d <directory> -x <x> -y <y> -n <n>'
+    help_line = 'generator_one_by_one.py -d <directory> -x <x> -y <y> -n <n>'
 
     try:
         opts, args = getopt.getopt(argv,"hd:x:y:n:v:")
@@ -91,17 +90,30 @@ def main(argv):
 
     path = os.path.join("plans/", directory)
     empty_folder(path)
+    shelf_cells = {}
+    robot_cells = []
     for id in range(n_agents):
-        rules = rules_generator(x,y,id+1)
+        rules, shelf_cells, robot_cells = rules_generator(x,y,id+1,shelf_cells,robot_cells)
         temp_out = os.path.join(path,'instance_nona_'+str(id+1)+'.lp')
         with open(temp_out,'w') as file:
             file.writelines(rules)
+    print(shelf_cells)
+    for id in range(n_agents):
+        temp_out = os.path.join(path, 'instance_nona_' + str(id + 1) + '.lp')
+        for id_sh,(i,j) in shelf_cells.items():
+            if (i,j) != shelf_cells[id+1]:
+                shelf_rule = Rule('node',id_sh,'at',(i,j)).to_string()
+                print(f'Rule to delete: {shelf_rule} from instance {id+1}')
+                remove_node(temp_out,(i,j))
         run(temp_out, path, 'plan_only_'+str(id+1), 30)
         aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'_conflicts.lp'))
 
+    #delete_instances(path=path)
     merge_plans(directory=path,output_name='merged_plans.lp')
 
     visualize(os.path.join(path,'merged_plans.lp'))
+
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
