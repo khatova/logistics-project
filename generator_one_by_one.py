@@ -12,8 +12,8 @@ def get_random_tuple(x,y,robot=False):
         i = random.randint(1, x)
         j = y
     else:
-        i = random.randint(2, x - 2)
-        j = random.randint(2, y - 2)
+        i = random.randint(2, x - 1)
+        j = random.randint(2, y - 1)
     return (i,j)
 
 def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells=[]):
