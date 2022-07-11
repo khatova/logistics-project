@@ -103,12 +103,12 @@ def main(argv):
         for id_sh,(i,j) in shelf_cells.items():
             if (i,j) != shelf_cells[id+1]:
                 shelf_rule = Rule('node',id_sh,'at',(i,j)).to_string()
-                print(f'Rule to delete: {shelf_rule} from instance {id+1}')
+                #print(f'Rule to delete: {shelf_rule} from instance {id+1}')
                 remove_node(temp_out,(i,j))
         run(temp_out, path, 'plan_only_'+str(id+1), 30)
-        aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'_conflicts.lp'))
+        aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'.lp'))
 
-    #delete_instances(path=path)
+    delete_instances(path=path)
     merge_plans(directory=path,output_name='merged_plans.lp')
 
     visualize(os.path.join(path,'merged_plans.lp'))

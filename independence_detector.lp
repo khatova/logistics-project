@@ -12,6 +12,8 @@ vertical_edge_conflict(R1,(X,Y),R2,(X,Y'),T) :- position(robot(R1),(X,Y),T), pos
 horizontal_edge_conflict(R1,(X,Y),R2,(X',Y),T) :- position(robot(R1),(X,Y),T), position(robot(R2),(X',Y),T), position(robot(R1),(X',Y),T+1), position(robot(R2),(X,Y),T+1), time_(T).
 edge_conflict(R,T) :- vertical_edge_conflict(R,_,_,_,T).
 edge_conflict(R,T) :- horizontal_edge_conflict(R,_,_,_,T).
+node_conflict(R1,R2,C,T) :- position(robot(R1),C,T+1), position(robot(R2),C,T+1).
+node_conflict(R,T) :- node_conflict(R,_,_,T).
 
 conflict(R,S,T) :- position(robot(R),(X,Y),T), position(robot(S),(X,Y),T), R < S.
 conflict(R,T) :- edge_conflict(R,T).

@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import os, sys, getopt, argparse
+from utils import aesthetic
 
 def run(directory, output):
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
@@ -32,21 +33,6 @@ def run(directory, output):
         else:
             print("Command runned with output... : {}".format(output))
 
-def aesthetic(location):
-    with open(location, 'r+') as file:
-        lines = file.readlines()
-        #TODO: Remove each optimization line
-        if 'SATISFIABLE' in lines:
-            lines.remove('SATISFIABLE')
-        elif 'SATISFIABLE\n' in lines:
-            lines.remove('SATISFIABLE\n')
-    with open(location, "w") as file:
-        for line in lines:
-            rules = line.split()
-            for rule in rules:
-                rule = rule.replace("'","")
-                file.write(rule + "\n")
-
 def cluster(directory):
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
     if directory not in dirs:
@@ -74,7 +60,7 @@ def cluster(directory):
         conflicted_robots = list(conflicted_robots_set)
         print("Conflicted robots {}".format(conflicted_robots))
 
-        stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store']
+        stopwords = ['solution', 'cluster', 'merger', '.DS_Store']
         for f in files:
             quit = False
             for sw in stopwords:
@@ -83,8 +69,7 @@ def cluster(directory):
             if quit == True:
                 continue
             for cr in conflicted_robots:
-                file_number = f[-5:-3].replace('_','')
-                if int(file_number) == cr:
+                if str(cr) in f:
                     temp = os.path.join("plans/", directory, f)
                     cmd = "move {} {}".format(temp,cluster_path)
                     print(cmd)
@@ -101,7 +86,7 @@ def main(argv):
 
     directory = 'original'
 
-    help_line = 'run_clingo.py -d <directory>'
+    help_line = 'independence_day.py -d <directory>'
 
     try:
         opts, args = getopt.getopt(argv,"h:d:")

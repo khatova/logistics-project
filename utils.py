@@ -4,7 +4,9 @@ def empty_folder(path):
     for filename in os.listdir(path):
         file_path = os.path.join(path, filename)
         try:
-            if os.path.isfile(file_path) or os.path.islink(file_path):
+            if 'merger' in file_path:
+                continue
+            elif os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
@@ -52,3 +54,11 @@ def remove_node(path,coor):
         for line in lines:
             line = line.replace("'", "")
             file.write(line)
+
+def run_cmd(command):
+    stream = os.popen(command)
+    output = stream.read()
+    if output == "" or output == None:
+        print("Command runned without output")
+    else:
+        print("Command runned with output... : {}".format(output))

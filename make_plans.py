@@ -7,7 +7,7 @@ def run(instance,output_folder,output_name,horizon):
     action_path = "asprilo-encodings/m/action-M-no-constraints.lp"
     goal_path = "asprilo-encodings/m/goal-M.lp"
     out_path = "asprilo-encodings/m/output-M.lp"
-    output_temp = os.path.join(output_folder, output_name + '_conflicts.lp')
+    output_temp = os.path.join(output_folder, output_name + '.lp')
     # TODO: mkdir
 
     command = "clingo --out-atomf='%s.' -V0 -c horizon="
