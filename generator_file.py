@@ -3,10 +3,15 @@ from rule import Rule
 import sys
 import argparse, getopt
 import random
+from utils import visualize
 
-def get_random_tuple(x,y):
-    i = random.randint(2, x - 2)
-    j = random.randint(2, y - 2)
+def get_random_tuple(x,y,robot=False):
+    if robot:
+        i = random.randint(1, x)
+        j = y
+    else:
+        i = random.randint(2, x - 2)
+        j = random.randint(2, y - 2)
     return (i,j)
 
 def rules_generator(x=5,y=5,n_agents=2):
@@ -30,27 +35,19 @@ def rules_generator(x=5,y=5,n_agents=2):
             shelf_tuple = get_random_tuple(x,y)
         used_cells.append(shelf_tuple)
         rule4 = Rule('shelf',a+1,'at',shelf_tuple)
-        rule5 = Rule('robot', a + 1, 'at', (a + 2, y))
+        robot_tuple = get_random_tuple(x, y,robot=True)
+        while robot_tuple in used_cells:
+            robot_tuple = get_random_tuple(x, y, robot= True)
+        used_cells.append(robot_tuple)
+        rule5 = Rule('robot', a + 1, 'at', robot_tuple)
         rule6 = Rule('order',count,'line',((a+1),1))
-        for x in [rule1, rule2, rule3,rule4,rule5,rule6]:
-            rules.append(x.to_string())
+        for ru in [rule1, rule2, rule3,rule4,rule5,rule6]:
+            rules.append(ru.to_string())
 
-    rule = Rule('pickingStation',1,'at',(int(x/2),1))
+    rule = Rule('pickingStation',1,'at',(int((x+1)/2),1))
     rules.append(rule.to_string())
 
     return rules
-
-def visualize(plan):
-    command = "".join(["viz  -p ",plan])
-    print("Command: {}".format(command))
-
-    stream = os.popen(command)
-    output = stream.read()
-    if output == "" or output == None:
-        print("Command runned without output")
-    else:
-        print("Command runned with output... : {}".format(output))
-
 
 def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
@@ -74,11 +71,11 @@ def main(argv):
         elif opt == '-d':
             directory = arg
         elif opt == '-x':
-            x = arg
+            x = int(arg)
         elif opt == '-y':
-            y = arg
+            y = int(arg)
         elif opt == '-n':
-            n_agents = arg
+            n_agents = int(arg)
         elif opt == '-v':
             vis = True
 

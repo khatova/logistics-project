@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="independence bayesian">
-      <change afterPath="$PROJECT_DIR$/desktop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generator_file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/make_plans.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/merge_plans.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rule.py" afterDir="false" />
+    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="shelf in more space">
+      <change afterPath="$PROJECT_DIR$/hierarchical.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hierarchical_output.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/merger_hierarchical.lp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator_command.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_original_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_original_plans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/original/plan_x3y2r1s2p2_1_original.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/original/plan_x3y2r1s2p2_1_original.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clustering.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator_one_by_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator_one_by_one.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/independence_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/independence_day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/independence_detector.lp" beforeDir="false" afterPath="$PROJECT_DIR$/independence_detector.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_plans.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/asprilo-seminar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -64,7 +65,7 @@
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.desktop">
+  <component name="RunManager" selected="Python.generator_one_by_one">
     <configuration name="desk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="logistics-project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -153,7 +154,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="run_clingo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="generator_one_by_one" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="logistics-project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -166,7 +167,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_clingo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generator_one_by_one.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -177,11 +178,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.generator_one_by_one" />
         <item itemvalue="Python.desktop" />
         <item itemvalue="Python.generator_file" />
         <item itemvalue="Python.desk" />
         <item itemvalue="Python.generator_command" />
-        <item itemvalue="Python.run_clingo" />
       </list>
     </recent_temporary>
   </component>
@@ -214,6 +215,15 @@
       <workItem from="1655651690822" duration="10670000" />
       <workItem from="1655900977864" duration="4342000" />
       <workItem from="1656082500420" duration="9618000" />
+      <workItem from="1656243960511" duration="3064000" />
+      <workItem from="1656252193479" duration="1063000" />
+      <workItem from="1656321759603" duration="5358000" />
+      <workItem from="1656505074107" duration="3456000" />
+      <workItem from="1656905673700" duration="2896000" />
+      <workItem from="1656932710962" duration="652000" />
+      <workItem from="1657111700450" duration="332000" />
+      <workItem from="1657285879332" duration="7613000" />
+      <workItem from="1657532185957" duration="602000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
@@ -236,7 +246,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655901550924</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="citation readme">
+      <created>1656329331551</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656329331551</updated>
+    </task>
+    <task id="LOCAL-00005" summary="shelf in more space">
+      <created>1657111846851</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1657111846851</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +282,9 @@
     <MESSAGE value="New version run_clingo with visualizer" />
     <MESSAGE value="very simple independece detector (1 cluster)" />
     <MESSAGE value="independence bayesian" />
-    <option name="LAST_COMMIT_MESSAGE" value="independence bayesian" />
+    <MESSAGE value="citation readme" />
+    <MESSAGE value="shelf in more space" />
+    <option name="LAST_COMMIT_MESSAGE" value="shelf in more space" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/logistics_project$run_clingo.coverage" NAME="run_clingo Coverage Results" MODIFIED="1652198449344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -266,6 +292,7 @@
     <SUITE FILE_PATH="coverage/logistics_project$plan_dresser.coverage" NAME="plan_dresser Coverage Results" MODIFIED="1652197880675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/logistics_project$generator_file.coverage" NAME="generator_file Coverage Results" MODIFIED="1656089402000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/logistics_project$desktop.coverage" NAME="desktop Coverage Results" MODIFIED="1656101239389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/logistics_project$generator_one_by_one.coverage" NAME="generator_one_by_one Coverage Results" MODIFIED="1656506699018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/logistics_project$desk.coverage" NAME="desk Coverage Results" MODIFIED="1653117627023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

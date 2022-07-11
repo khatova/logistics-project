@@ -2,25 +2,12 @@ import os
 import sys
 import argparse
 import getopt
+from utils import aesthetic
 
-def aesthetic(location):
-    with open(location, 'r') as file:
-        lines = file.readlines()
-        if 'SATISFIABLE' in lines:
-            lines.remove('SATISFIABLE')
-        elif 'SATISFIABLE\n' in lines:
-            lines.remove('SATISFIABLE\n')
-    with open(location, "w") as file:
-        for line in lines:
-            rules = line.split()
-            for rule in rules:
-                rule = rule.replace("'","")
-                file.write(rule + "\n")
-
-def merge_plans(directory):
+def merge_plans(directory, output_name='merged_plans.lp'):
         rules = []
         files = os.listdir(directory)
-        stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store']
+        stopwords = ['non','solution', 'cluster', 'merger', '.DS_Store']
         for file in files:
             quit = False
             for sw in stopwords:
@@ -28,18 +15,19 @@ def merge_plans(directory):
                     quit = True
             if quit == True:
                 continue
+            print(f'Processing file {file} in folder {directory}')
             with open(os.path.join(directory,file), 'r') as f:
                 lines = f.readlines()
                 for line in lines:
                     if line not in rules:
                         rules.append(line)
-        with open(os.path.join(directory,'merged_plans.lp'),'w') as f:
+        with open(os.path.join(directory,output_name),'w') as f:
             for r in rules:
                 f.write(r)
 
 def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
-    help_line = 'run_clingo.py -d <directory>'
+    help_line = 'merge_plans.py -d <directory>'
 
     try:
         opts, args = getopt.getopt(argv,"hd:")
