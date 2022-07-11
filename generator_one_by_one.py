@@ -13,10 +13,10 @@ def get_random_tuple(x,y,robot=False):
         j = y
     else:
         i = random.randint(2, x - 1)
-        j = random.randint(2, y - 1)
+        j = random.randint(2, y - 2)
     return (i,j)
 
-def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells=[]):
+def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells={}):
     rules = []
     count = 0
     for j in range(y):
@@ -36,9 +36,9 @@ def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells=[]):
     shelf_cells[id_of_agent] = shelf_tuple
     rule4 = Rule('shelf',id_of_agent,'at',shelf_tuple)
     robot_tuple = get_random_tuple(x, y,robot=True)
-    while robot_tuple in robot_cells:
+    while robot_tuple in robot_cells.values():
         robot_tuple = get_random_tuple(x, y, robot= True)
-    robot_cells.append(robot_tuple)
+    robot_cells[id_of_agent] = robot_tuple
     rule5 = Rule('robot', id_of_agent, 'at', robot_tuple)
     rule6 = Rule('order',count,'line',(id_of_agent,1))
     for ru in [rule1, rule2, rule3,rule4,rule5,rule6]:
@@ -91,19 +91,25 @@ def main(argv):
     path = os.path.join("plans/", directory)
     empty_folder(path)
     shelf_cells = {}
-    robot_cells = []
+    robot_cells = {}
     for id in range(n_agents):
         rules, shelf_cells, robot_cells = rules_generator(x,y,id+1,shelf_cells,robot_cells)
         temp_out = os.path.join(path,'instance_nona_'+str(id+1)+'.lp')
         with open(temp_out,'w') as file:
             file.writelines(rules)
-    print(shelf_cells)
+    print('shelf_cells: ', shelf_cells)
+    print('robot_cells: ', robot_cells)
     for id in range(n_agents):
         temp_out = os.path.join(path, 'instance_nona_' + str(id + 1) + '.lp')
         for id_sh,(i,j) in shelf_cells.items():
             if (i,j) != shelf_cells[id+1]:
                 shelf_rule = Rule('node',id_sh,'at',(i,j)).to_string()
                 print(f'Rule to delete: {shelf_rule} from instance {id+1}')
+                remove_node(temp_out,(i,j))
+        for id_r,(i,j) in robot_cells.items():
+            if id_r != id+1:
+                robot_rule = Rule('node',id_r,'at',(i,j)).to_string()
+                print(f'Rule to delete: {robot_rule} from instance {id+1}')
                 remove_node(temp_out,(i,j))
         run(temp_out, path, 'plan_only_'+str(id+1), 30)
         aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'_conflicts.lp'))
