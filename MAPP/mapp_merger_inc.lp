@@ -26,29 +26,29 @@ used_alt(C1,C2,C3,C,AS) :- position(robot(R),C1,T), position(robot(R),C2,T+1), p
 num_steps(0,-1).
 total_num_steps(0,-1).
 
-#program progression_step(ps).
+#program progression_step(prs).
 
 % private zone = all cels visited by a robot at one progression step before the specified substep
-private_zone(R,ps(ps),ss(0),C) :- progrstep(ps), new_position(R,C,ps(ps),ss(0)).
-private_zone(R,ps(ps),ss(SS),C) :- progrstep(ps), substep(SS), private_zone(R,ps(ps),ss(SS-1),C), SS>0.
+private_zone(R,ps(prs),ss(0),C) :- progrstep(prs), new_position(R,C,ps(prs),ss(0)).
+private_zone(R,ps(prs),ss(SS),C) :- progrstep(prs), substep(SS), private_zone(R,ps(prs),ss(SS-1),C), SS>0.
 
 
 % A. WAIT if the robot was pushed from its initial path during the current progression step
 %pushed(R,ps(PS),ss(SS)) :- push(R, _, _, ps(PS), ss(SS')), substep(SS), substep(SS'), SS'<SS.
-wait(R,ps(ps),ss(SS)) :- push(R, _, _, _, ps(ps), ss(SS')), substep(SS), substep(SS'), SS'<SS,
-				#false : progr_done(ps(ps),ss(SS'')), SS''<SS.
+wait(R,ps(prs),ss(SS)) :- push(R, _, _, _, ps(prs), ss(SS')), substep(SS), substep(SS'), SS'<SS,
+				#false : progr_done(ps(prs),ss(SS'')), SS''<SS.
 
 % B. WAIT if next step belongs to the private zone of a robot with higher priority
 
-wait(R,ps(ps),ss(SS)) :- position(robot(R),C,T+1), initial_step(R,T,ps(ps),ss(SS-1)),
-				private_zone(R',ps(ps),ss(SS),C), r1_higherthan_r2(R',R),
-				#false : progr_done(ps(ps),ss(SS')), SS'<SS; not push(R,_,_,_,ps(ps),ss(SS)).
+wait(R,ps(prs),ss(SS)) :- position(robot(R),C,T+1), initial_step(R,T,ps(prs),ss(SS-1)),
+				private_zone(R',ps(prs),ss(SS),C), r1_higherthan_r2(R',R),
+				#false : progr_done(ps(prs),ss(SS')), SS'<SS; not push(R,_,_,_,ps(prs),ss(SS)).
 
 % -> transform wait() into new_position() (needed for bring blank algorithm)
-new_position(R,C,ps(ps),ss(SS)) :- new_position(R,C,ps(ps),ss(SS-1)), wait(R,ps(ps),ss(SS)).
+new_position(R,C,ps(prs),ss(SS)) :- new_position(R,C,ps(prs),ss(SS-1)), wait(R,ps(prs),ss(SS)).
 
 % we're staying on the same time_(T) of an initial plan if we wait at the current substep
-initial_step(R,T,ps(ps),ss(SS)) :- time_(T), initial_step(R,T,ps(ps),ss(SS-1)), wait(R,ps(ps),ss(SS)).
+initial_step(R,T,ps(prs),ss(SS)) :- time_(T), initial_step(R,T,ps(prs),ss(SS-1)), wait(R,ps(prs),ss(SS)).
 
 % C. MOVE to next step if there is blank
 % next cell on initial path is blank if it doesn't belong to a private zone of a robot with higher priority
@@ -56,39 +56,39 @@ initial_step(R,T,ps(ps),ss(SS)) :- time_(T), initial_step(R,T,ps(ps),ss(SS-1)), 
 %no_next_blank_2(R,C,ps(PS),ss(SS+1)) :- new_position(R',C,ps(PS),ss(SS+1)), R' != R.
 
 % edge conflict
-next_occupied(R,C,ps(ps),ss(SS+1)) :- new_position(R,C',ps(ps),ss(SS)), new_position(R',C,ps(ps),ss(SS)),
-				initial_step(R,T-1,ps(ps),ss(SS)), position(robot(R),C,T),
-				initial_step(R',T'-1,ps(ps),ss(SS)), position(robot(R'),C',T').
+next_occupied(R,C,ps(prs),ss(SS+1)) :- new_position(R,C',ps(prs),ss(SS)), new_position(R',C,ps(prs),ss(SS)),
+				initial_step(R,T-1,ps(prs),ss(SS)), position(robot(R),C,T),
+				initial_step(R',T'-1,ps(prs),ss(SS)), position(robot(R'),C',T').
 
 % really occupied cell
-next_occupied(R,C,ps(ps),ss(SS+1)) :- new_position(R,C',ps(ps),ss(SS)), new_position(R',C,ps(ps),ss(SS)),
-				initial_step(R,T-1,ps(ps),ss(SS)), position(robot(R),C,T), wait(R',ps(ps),ss(SS)).
+next_occupied(R,C,ps(prs),ss(SS+1)) :- new_position(R,C',ps(prs),ss(SS)), new_position(R',C,ps(prs),ss(SS)),
+				initial_step(R,T-1,ps(prs),ss(SS)), position(robot(R),C,T), wait(R',ps(prs),ss(SS)).
 
 %{next_blank1(R,C,ps(PS),ss(SS+1))} :- progrstep(PS), substep(SS), initial_step(R,T-1,ps(PS),ss(SS)), position(robot(R),C,T),
 %				#false : new_position(R',C,ps(PS),ss(SS+1)), R' != R;
 				%#false : new_position(R',C,ps(PS),ss(SS)), R' != R;
 %				#false : private_zone(R'',ps(PS),ss(SS+1),C), r1_higherthan_r2(R'',R).
-next_blank(R,C,ps(ps),ss(SS+1)) :- progrstep(ps), substep(SS), initial_step(R,T-1,ps(ps),ss(SS)), position(robot(R),C,T),
-				not next_occupied(R,C,ps(ps),ss(SS+1)),%#false : new_position(R',C,ps(PS),ss(SS)), R' != R;
-				#false : private_zone(R'',ps(ps),ss(SS+1),C), r1_higherthan_r2(R'',R).
+next_blank(R,C,ps(prs),ss(SS+1)) :- progrstep(prs), substep(SS), initial_step(R,T-1,ps(prs),ss(SS)), position(robot(R),C,T),
+				not next_occupied(R,C,ps(prs),ss(SS+1)),%#false : new_position(R',C,ps(PS),ss(SS)), R' != R;
+				#false : private_zone(R'',ps(prs),ss(SS+1),C), r1_higherthan_r2(R'',R).
 
 % in previous line "not new_position()"" maybe is redundant
-movement(R,C,ps(ps),ss(SS)) :- next_blank(R,C,ps(ps),ss(SS)), not wait(R,ps(ps),ss(SS)).
-private_zone(R,ps(ps),ss(SS),C) :- movement(R,C,ps(ps),ss(SS)).
-new_position(R,C,ps(ps),ss(SS)) :- movement(R,C,ps(ps),ss(SS)).
-prev_position(R,C,C') :- movement(R,C,ps(ps),ss(SS)), new_position(R,C',ps(ps),ss(SS-1)).
+movement(R,C,ps(prs),ss(SS)) :- next_blank(R,C,ps(prs),ss(SS)), not wait(R,ps(prs),ss(SS)).
+private_zone(R,ps(prs),ss(SS),C) :- movement(R,C,ps(prs),ss(SS)).
+new_position(R,C,ps(prs),ss(SS)) :- movement(R,C,ps(prs),ss(SS)).
+prev_position(R,C,C') :- movement(R,C,ps(prs),ss(SS)), new_position(R,C',ps(prs),ss(SS-1)).
 
 % go to next initial step if movement() done.
-initial_step(R,T,ps(ps),ss(SS)) :- time_(T), initial_step(R,T-1,ps(ps),ss(SS-1)), movement(R,_,ps(ps),ss(SS)).
+initial_step(R,T,ps(prs),ss(SS)) :- time_(T), initial_step(R,T-1,ps(prs),ss(SS-1)), movement(R,_,ps(prs),ss(SS)).
 % TODO: move only if goal not achieved yet (maybe it already works?)
 
 % D. BRING BLANK
 
-pushed_before(R,ps(ps),ss(SS)) :- push(R,_,_,_,ps(ps),ss(SS')), substep(SS), substep(SS'), SS'<SS.
-need_blank(R,C,ps(ps),ss(SS)) :- progrstep(ps), substep(SS), initial_step(R,T,ps(ps),ss(SS-1)), position(robot(R),C,T+1),
-				not movement(R,_,ps(ps),ss(SS)), not pushed_before(R,ps(ps),ss(SS)), 
-				#false : progr_done(ps(ps),ss(SS')), SS' < SS;
-				#false : wait(R,ps(ps),ss(SS')), SS'<=SS.
+pushed_before(R,ps(prs),ss(SS)) :- push(R,_,_,_,ps(prs),ss(SS')), substep(SS), substep(SS'), SS'<SS.
+need_blank(R,C,ps(prs),ss(SS)) :- progrstep(prs), substep(SS), initial_step(R,T,ps(prs),ss(SS-1)), position(robot(R),C,T+1),
+				not movement(R,_,ps(prs),ss(SS)), not pushed_before(R,ps(prs),ss(SS)), 
+				#false : progr_done(ps(prs),ss(SS')), SS' < SS;
+				#false : wait(R,ps(prs),ss(SS')), SS'<=SS.
 % Blank here is defined as non-occupied cell on the alt path from the position at the previous time step t-1 
 % to the position at the next step t+1, which doesn't belong to a private zone of any robot with higher priority
 
@@ -97,84 +97,84 @@ need_blank(R,C,ps(ps),ss(SS)) :- progrstep(ps), substep(SS), initial_step(R,T,ps
 
 % alt_blank() fires if there's a blank on the alt path if we consider robot R tring to do his step from C2 to C3, 
 % with its previous osition being C1.
-private_of_higher(R,C,ps(ps),ss(SS)) :- need_blank(R,_,ps(ps),ss(SS)), private_zone(R',ps(ps),ss(SS),C), r1_higherthan_r2(R',R).
-position_of_any(C,ps(ps),ss(SS)) :- new_position(R',C,ps(ps),ss(SS)), robot(R').
-position_of_higher(R,C,ps(ps),ss(SS)) :- need_blank(R,_,ps(ps),ss(SS+1)), new_position(R',C,ps(ps),ss(SS)), r1_higherthan_r2(R',R).
-alt_blank(R,C_is_blank,C1,C2,C3,ps(ps),ss(SS),AS) :- new_position(R,C2,ps(ps),ss(SS-1)), prev_position(R,C2,C1), need_blank(R,C3,ps(ps),ss(SS)), 
-				used_alt(C1,C2,C3,C_is_blank,AS), not position_of_any(C_is_blank,ps(ps),ss(SS-1)), not private_of_higher(R,C_is_blank,ps(ps),ss(SS-1)).
+private_of_higher(R,C,ps(prs),ss(SS)) :- need_blank(R,_,ps(prs),ss(SS)), private_zone(R',ps(prs),ss(SS),C), r1_higherthan_r2(R',R).
+position_of_any(C,ps(prs),ss(SS)) :- new_position(R',C,ps(prs),ss(SS)), robot(R').
+position_of_higher(R,C,ps(prs),ss(SS)) :- need_blank(R,_,ps(prs),ss(SS+1)), new_position(R',C,ps(prs),ss(SS)), r1_higherthan_r2(R',R).
+alt_blank(R,C_is_blank,C1,C2,C3,ps(prs),ss(SS),AS) :- new_position(R,C2,ps(prs),ss(SS-1)), prev_position(R,C2,C1), need_blank(R,C3,ps(prs),ss(SS)), 
+				used_alt(C1,C2,C3,C_is_blank,AS), not position_of_any(C_is_blank,ps(prs),ss(SS-1)), not private_of_higher(R,C_is_blank,ps(prs),ss(SS-1)).
 
-shorter_alt_blank(R,C_is_blank,C1,C2,C3,ps(PS),ss(SS),AS) :- alt_blank(R,C_is_blank,C1,C2,C3,ps(PS),ss(SS),AS), 
-				alt_blank(R,C',C1,C2,C3,ps(PS),ss(SS),AS'), AS'>AS.
-cant_push(R,C_is_blank,C1,C2,C3,ps(ps),ss(SS)) :- alt_blank(R,C_is_blank,C1,C2,C3,ps(ps),ss(SS),AS), used_alt(C1,C2,C3,C',AS'), AS'>AS, 
-				position_of_higher(R,C',ps(ps),ss(SS-1)).
-can_bring_blank(R,C_is_blank,C1,C2,C3,ps(ps),ss(SS)) :- alt_blank(R,C_is_blank,C1,C2,C3,ps(ps),ss(SS),AS), 
-				not cant_push(R,C_is_blank,C1,C2,C3,ps(ps),ss(SS)), not shorter_alt_blank(R,C_is_blank,C1,C2,C3,ps(ps),ss(SS),AS). 
+shorter_alt_blank(R,C_is_blank,C1,C2,C3,ps(prs),ss(SS),AS) :- alt_blank(R,C_is_blank,C1,C2,C3,ps(PS),ss(SS),AS), 
+				alt_blank(R,C',C1,C2,C3,ps(prs),ss(SS),AS'), AS'>AS.
+cant_push(R,C_is_blank,C1,C2,C3,ps(prs),ss(SS)) :- alt_blank(R,C_is_blank,C1,C2,C3,ps(prs),ss(SS),AS), used_alt(C1,C2,C3,C',AS'), AS'>AS, 
+				position_of_higher(R,C',ps(prs),ss(SS-1)).
+can_bring_blank(R,C_is_blank,C1,C2,C3,ps(prs),ss(SS)) :- alt_blank(R,C_is_blank,C1,C2,C3,ps(prs),ss(SS),AS), 
+				not cant_push(R,C_is_blank,C1,C2,C3,ps(prs),ss(SS)), not shorter_alt_blank(R,C_is_blank,C1,C2,C3,ps(prs),ss(SS),AS). 
 
 % robots need to be pushed along the alt path from the cells positioned between blank and our next step.
 % robot(R) here is the robot which needs blank on his next step, not a robot that we need to push!
 % push_from_cell() fires for cells C from which robots need to be pushed along the alt path for a triplet(C1,C2,C_need_blank)
-push_from_cell(R,R',C,C1,C2,C_need_blank,ps(ps),ss(SS)) :- can_bring_blank(R,C_is_blank,C1,C2,C_need_blank,ps(ps),ss(SS)),
-				used_alt(C1,C2,C_need_blank,C_is_blank,AS), used_alt(C1,C2,C_need_blank,C,AS'), AS'>AS, new_position(R',C,ps(ps),ss(SS-1)).
+push_from_cell(R,R',C,C1,C2,C_need_blank,ps(prs),ss(SS)) :- can_bring_blank(R,C_is_blank,C1,C2,C_need_blank,ps(prs),ss(SS)),
+				used_alt(C1,C2,C_need_blank,C_is_blank,AS), used_alt(C1,C2,C_need_blank,C,AS'), AS'>AS, new_position(R',C,ps(prs),ss(SS-1)).
 
 % 2) push robots with lower priority back along the alt path (this brings blank to the first cell of the triplet)
 % - need to transform pushes and waits into new_positions because it can be its new_position() if it was already pushed 
 %   or position() if it waited.
-push(R',C_from,C_to,I,ps(ps),ss(SS)) :- push_from_cell(R,R',C_from,C1,C2,C_need_blank,ps(ps),ss(SS)), used_alt(C1,C2,C_need_blank,C_from,AS),  
-					used_alt(C1,C2,C_need_blank,C_to,AS-1), I = #count{ps,SS : push(_,_,_,_,ps(ps),ss(SS')), SS' < SS}, progrstep(ps).
+push(R',C_from,C_to,I,ps(prs),ss(SS)) :- push_from_cell(R,R',C_from,C1,C2,C_need_blank,ps(prs),ss(SS)), used_alt(C1,C2,C_need_blank,C_from,AS),  
+					used_alt(C1,C2,C_need_blank,C_to,AS-1), I = #count{prs,SS : push(_,_,_,_,ps(prs),ss(SS')), SS' < SS}, progrstep(prs).
 
 % 3) finally, we brought blank and can move now
-brought_blank(R,C,ps(ps),ss(SS)) :- push_from_cell(R,_,C',_,_,C,ps(ps),ss(SS)), push(R',C',_,_,ps(ps),ss(SS)).
-new_position(R,C,ps(ps),ss(SS)) :- brought_blank(R,C,ps(ps),ss(SS)).
-private_zone(R,ps(ps),ss(SS),C) :- brought_blank(R,C,ps(ps),ss(SS)).
-initial_step(R,T,ps(ps),ss(SS)) :- time_(T), initial_step(R,T-1,ps(ps),ss(SS-1)), brought_blank(R,_,ps(ps),ss(SS)).
+brought_blank(R,C,ps(prs),ss(SS)) :- push_from_cell(R,_,C',_,_,C,ps(prs),ss(SS)), push(R',C',_,_,ps(prs),ss(SS)).
+new_position(R,C,ps(prs),ss(SS)) :- brought_blank(R,C,ps(prs),ss(SS)).
+private_zone(R,ps(prs),ss(SS),C) :- brought_blank(R,C,ps(prs),ss(SS)).
+initial_step(R,T,ps(prs),ss(SS)) :- time_(T), initial_step(R,T-1,ps(prs),ss(SS-1)), brought_blank(R,_,ps(prs),ss(SS)).
 
 % translate push into new_position()
-new_position(R,C,ps(ps),ss(SS)) :- push(R,_,C,_,ps(ps),ss(SS)).
-private_zone(R,ps(ps),ss(SS),C) :- push(R,_,C,_,ps(ps),ss(SS)).
-prev_position(R,C,C') :- new_position(R,C,ps(ps),ss(SS)), push(R,C',C,_,ps(ps),ss(SS)).
+new_position(R,C,ps(prs),ss(SS)) :- push(R,_,C,_,ps(prs),ss(SS)).
+private_zone(R,ps(prs),ss(SS),C) :- push(R,_,C,_,ps(prs),ss(SS)).
+prev_position(R,C,C') :- new_position(R,C,ps(prs),ss(SS)), push(R,C',C,_,ps(prs),ss(SS)).
 
 % we're staying on the same step of the initial plan if we were pushed
-initial_step(R,T,ps(ps),ss(SS)) :- time_(T), initial_step(R,T,ps(ps),ss(SS-1)), push(R,_,_,_,ps(ps),ss(SS)).
+initial_step(R,T,ps(prs),ss(SS)) :- time_(T), initial_step(R,T,ps(prs),ss(SS-1)), push(R,_,_,_,ps(prs),ss(SS)).
 
 
 % finish progression step if no robots can move
-progr_done(ps(ps),ss(SS-1)) :- progrstep(ps), substep(SS), not movement(_,_,ps(ps),ss(SS)), not push(_,_,_,_,ps(ps),ss(SS)), SS != 0,
-				#false : progr_done(ps(ps),ss(SS')), SS' < SS-1.
+progr_done(ps(prs),ss(SS-1)) :- progrstep(prs), substep(SS), not movement(_,_,ps(prs),ss(SS)), not push(_,_,_,_,ps(prs),ss(SS)), SS != 0,
+				#false : progr_done(ps(prs),ss(SS')), SS' < SS-1.
 
 % E. REPOSITIONING 
 % if no moves possible for the current substep of the current progression step, then we need to revert all pushes.
-num_pushes(N,ps) :- N = #count{I,ps : push(_,_,_,I,ps(ps),_)}, progrstep(ps).
-push_back(R,C_from,C_to,ps(ps),ss(SS)) :- push(R,C_to,C_from,I,ps(ps),ss(SS')), SS'<SS,
-				num_pushes(NM,ps), progr_done(ps(ps),ss(PD)), SS = PD + (NM - I), substep(SS).
+num_pushes(N,prs) :- N = #count{I,prs : push(_,_,_,I,ps(prs),_)}, progrstep(prs).
+push_back(R,C_from,C_to,ps(prs),ss(SS)) :- push(R,C_to,C_from,I,ps(prs),ss(SS')), SS'<SS,
+				num_pushes(NM,prs), progr_done(ps(prs),ss(PD)), SS = PD + (NM - I), substep(SS).
 
 % translate push_back into re_position()
-re_position(R,C,ps(ps),ss(SS)) :- push_back(R,_,C,ps(ps),ss(SS)).
-prev_position(R,C,C') :- re_position(R,C,ps(ps),ss(SS)), push_back(R,C',C,ps(ps),ss(SS)).
+re_position(R,C,ps(prs),ss(SS)) :- push_back(R,_,C,ps(prs),ss(SS)).
+prev_position(R,C,C') :- re_position(R,C,ps(prs),ss(SS)), push_back(R,C',C,ps(prs),ss(SS)).
 
 % we're staying on the same step of the initial plan if we were pushed back
-initial_step(R,T,ps(ps),ss(SS)) :- time_(T), initial_step(R,T,ps(ps),ss(SS-1)), push_back(R,_,_,ps(ps),ss(SS)).
+initial_step(R,T,ps(prs),ss(SS)) :- time_(T), initial_step(R,T,ps(prs),ss(SS-1)), push_back(R,_,_,ps(prs),ss(SS)).
 
 % repositioning is finished. We can move on to the next progression step.
-repositioning_done(ps(ps),ss(SS-1)) :- progrstep(ps), substep(SS), progr_done(ps(ps),ss(SS'')), SS''<SS,
-				not re_position(_,_,ps(ps),ss(SS)), #false : repositioning_done(ps(ps),ss(SS')), SS' < SS-1.
+repositioning_done(ps(prs),ss(SS-1)) :- progrstep(prs), substep(SS), progr_done(ps(prs),ss(SS'')), SS''<SS,
+				not re_position(_,_,ps(prs),ss(SS)), #false : repositioning_done(ps(prs),ss(SS')), SS' < SS-1.
 % copy the previous positions for the 0th substep of the new progression step.
-new_position(R,C,ps(ps+1),ss(0)) :- new_position(R,C,ps(ps),ss(SS)), repositioning_done(ps(ps),ss(SS)).
-new_position(R,C,ps(ps+1),ss(0)) :- re_position(R,C,ps(ps),ss(SS)), repositioning_done(ps(ps),ss(SS)).
-initial_step(R,T,ps(ps+1),ss(0)) :- time_(T), initial_step(R,T,ps(ps),ss(SS-1)), repositioning_done(ps(ps),ss(SS)).
+new_position(R,C,ps(prs+1),ss(0)) :- new_position(R,C,ps(prs),ss(SS)), repositioning_done(ps(prs),ss(SS)).
+new_position(R,C,ps(prs+1),ss(0)) :- re_position(R,C,ps(prs),ss(SS)), repositioning_done(ps(prs),ss(SS)).
+initial_step(R,T,ps(prs+1),ss(0)) :- time_(T), initial_step(R,T,ps(prs),ss(SS-1)), repositioning_done(ps(prs),ss(SS)).
 
 % common predicate for new_position() and re_position()
-pos(R,(X1,Y1),ps(ps),ss(SS)) :- new_position(R,(X1,Y1),ps(ps),ss(SS)).
-pos(R,(X1,Y1),ps(ps),ss(SS)) :- re_position(R,(X1,Y1),ps(ps),ss(SS)).
+pos(R,(X1,Y1),ps(prs),ss(SS)) :- new_position(R,(X1,Y1),ps(prs),ss(SS)).
+pos(R,(X1,Y1),ps(prs),ss(SS)) :- re_position(R,(X1,Y1),ps(prs),ss(SS)).
 
 % translate wait() and pos() into move_
 %move_(R,(0,0),T) :- wait(R,_,ss(T)).
 
-num_steps(N,ps) :- N1 = #count {ps,SS : new_position(_,_,ps(ps),ss(SS))},
-				N2 = #count {ps,SS : re_position(_,_,ps(ps),ss(SS))}, N=N1+N2-1, progrstep(ps).
-total_num_steps(TN,ps) :- total_num_steps(TN', ps-1), num_steps(N,ps), TN = TN' + N.
-mvmt(R,(X,Y),ps(ps),ss(SS)) :- pos(R,(X1,Y1),ps(ps),ss(SS-1)), pos(R,(X2,Y2),ps(ps),ss(SS)),SS>0,% PS>0,% SS>0,
+num_steps(N,prs) :- N1 = #count {prs,SS : new_position(_,_,ps(prs),ss(SS))},
+				N2 = #count {prs,SS : re_position(_,_,ps(prs),ss(SS))}, N=N1+N2-1, progrstep(prs).
+total_num_steps(TN,prs) :- total_num_steps(TN', prs-1), num_steps(N,prs), TN = TN' + N.
+mvmt(R,(X,Y),ps(prs),ss(SS)) :- pos(R,(X1,Y1),ps(prs),ss(SS-1)), pos(R,(X2,Y2),ps(prs),ss(SS)),SS>0,% PS>0,% SS>0,
 				direction((X,Y)), X1+X=X2, Y1+Y=Y2.
-move_(R,(X,Y),T) :- mvmt(R,(X,Y),ps(ps),ss(SS)), total_num_steps(N,ps-1), T=N+SS.
+move_(R,(X,Y),T) :- mvmt(R,(X,Y),ps(prs),ss(SS)), total_num_steps(N,prs-1), T=N+SS.
 
 %:- position(shelf(R),C,0), occurs(object(robot,R),_,_), not new_position(R,C,_,_).
 %#program validate.

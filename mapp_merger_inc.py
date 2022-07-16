@@ -34,6 +34,7 @@ def parse_args(argv):
     asp_file = "MAPP/mapp_merger_inc.lp"
     show_file = "MAPP/MAPP_output.lp"
     alt_file = "alt_paths.lp"
+    asprilo_input_file = "asprilo-encodings/input.lp"
     try:
         opts, args = getopt.getopt(argv, "hi:a:")
     except getopt.GetoptError:
@@ -60,10 +61,11 @@ def parse_args(argv):
             if os.path.isfile(f):
                 input += read_file_to_str(f)
 
-    asp = read_file_to_str(asp_file)
-    asp += read_file_to_str(show_file)
+    #asp = read_file_to_str(asp_file)
+    show = read_file_to_str(show_file)
+    asprilo_input = read_file_to_str(asprilo_input_file)
 
-    return input, asp
+    return input, asp_file, show, asprilo_input
 
 
 def on_model(m):
@@ -71,26 +73,47 @@ def on_model(m):
 
 
 def main(argv):
-    input, asp = parse_args(argv)
-    task = input+asp
+    input, asp, show, asprilo_input = parse_args(argv)
+    task = input + show
 
     ctl = Control()
+    ctl.load(asp)
+    ctl.add("base", [], asprilo_input)
     ctl.add("base", [], task)
 
     parts = [("base", [])]
     ctl.ground(parts)
-    ps = 0
+    prs = 0
 
     istop = get(ctl.get_const("istop"), "SAT")
-    while ps < 6:
-        parts.append(("progression_step", [Number(ps)]))
+
+    while prs < 6:
+        parts.append(("progression_step", [Number(prs)]))
         ctl.ground(parts)
-        ret = ctl.solve(on_model=on_model)
-        if ((istop == "SAT" and not ret.satisfiable) or
-                (istop == "UNSAT" and not ret.unsatisfiable) or
-                (istop == "UNKNOWN" and not ret.unknown)):
-            break
-        ps += 1
+        ctl.solve(on_model=on_model)
+        prs += 1
+#        with ctl.solve(yield_=True) as handle:
+#            models = list(iter(handle))
+#            if len(models) > 0:
+#                m = models[-1]
+#                for symbol in m.symbols(shown=True):
+#                    print(symbol,".")
+#        ps += 1
+#        print("incrementing ps to ", ps)
+    ctl.solve(on_model=on_model)
+
+
+
+
+ #   while ps < 6:
+  #      parts.append(("progression_step", [Number(ps)]))
+   #     ctl.ground(parts)
+    #    ret = ctl.solve(on_model=on_model)
+     #   if ((istop == "SAT" and not ret.satisfiable) or
+      #          (istop == "UNSAT" and not ret.unsatisfiable) or
+       #         (istop == "UNKNOWN" and not ret.unknown)):
+        #    break
+        #ps += 1
 
 
 if __name__ == "__main__":
