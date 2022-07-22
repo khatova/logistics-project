@@ -13,6 +13,10 @@ def empty_folder(path):
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
+def delete_file(file_path):
+    if os.path.isfile(file_path) or os.path.islink(file_path):
+        os.unlink(file_path)
+
 def aesthetic(location):
     with open(location, 'r') as file:
         lines = file.readlines()
@@ -62,3 +66,19 @@ def run_cmd(command):
         print("Command runned without output")
     else:
         print("Command runned with output... : {}".format(output))
+
+def add_lines(input,output):
+    with open(input, 'r') as file:
+        lines = file.readlines()
+    with open(output, 'a') as file:
+        for line in lines:
+            file.write(line)
+    remove_repeated(output)
+
+def remove_repeated(path):
+    with open(path, 'r') as file:
+        lines = file.readlines()
+        lines = list(set(lines))
+    with open(path, 'w') as file:
+        for line in lines:
+            file.write(line)

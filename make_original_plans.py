@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import os, sys, getopt, argparse, re
+from utils import run_cmd
 
 def split(plan_all, output_folder, output_name):
     all_plans = ""
@@ -35,12 +36,7 @@ def run(instance,output_folder,output_name,horizon):
     command = command + str(horizon)+" "+asprilo_path+" "+instance+" > "+output_temp
     print("Command: {}".format(command))
 
-    stream = os.popen(command)
-    output = stream.read()
-    if output == "" or output == None:
-        print("Command runned without output")
-    else:
-        print("Command runned with output... : {}".format(output))
+    run_cmd(command)
 
     with open(output_temp, 'r+') as file:
         lines = file.readlines()

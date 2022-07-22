@@ -4,7 +4,7 @@ import os
 import re
 import sys
 
-from utils import aesthetic
+from utils import aesthetic, run_cmd
 
 
 def read_file(file_path):
@@ -80,22 +80,11 @@ def run_step(progr_step, new_input, lp_files, prev_step_file):
     for lp_file in lp_files:
         command = command + " " + lp_file
     command = command + " > " + prev_step_file
-    run_command(command)
+    run_cmd(command)
     aesthetic(prev_step_file)
 
 
 #def pos_to_occurs()
-
-
-def run_command(command):
-    print("Command: {}".format(command))
-    stream = os.popen(command)
-    output = stream.read()
-    if output == "" or output is None:
-        print("Command runned without output")
-    else:
-        print("Command runned with output... : {}".format(output))
-
 
 def main(argv):
     lp_files, show_file, instance, prev_step_file, init_plans, step_input, out_file = parse_args(argv)
