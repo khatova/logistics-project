@@ -1,4 +1,5 @@
-import os, shutil
+import os, shutil, sys
+
 
 def empty_folder(path):
     for filename in os.listdir(path):
@@ -13,6 +14,7 @@ def empty_folder(path):
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
+
 def aesthetic(location):
     with open(location, 'r') as file:
         lines = file.readlines()
@@ -24,11 +26,12 @@ def aesthetic(location):
         for line in lines:
             rules = line.split()
             for rule in rules:
-                rule = rule.replace("'","")
+                rule = rule.replace("'", "")
                 file.write(rule + "\n")
 
+
 def visualize(plan):
-    command = "".join(["viz  -p ",plan])
+    command = "".join(["viz  -p ", plan])
     print("Command: {}".format(command))
 
     stream = os.popen(command)
@@ -38,13 +41,15 @@ def visualize(plan):
     else:
         print("Command runned with output... : {}".format(output))
 
+
 def delete_instances(path):
     files = os.listdir(path)
     for file in files:
         if 'instance' in file:
-            os.remove(os.path.join(path,file))
+            os.remove(os.path.join(path, file))
 
-def remove_node(path,coor):
+
+def remove_node(path, coor):
     with open(path, 'r') as file:
         lines = file.readlines()
         for line in lines:
@@ -55,6 +60,7 @@ def remove_node(path,coor):
             line = line.replace("'", "")
             file.write(line)
 
+
 def run_cmd(command):
     stream = os.popen(command)
     output = stream.read()
@@ -62,3 +68,23 @@ def run_cmd(command):
         print("Command runned without output")
     else:
         print("Command runned with output... : {}".format(output))
+
+
+def read_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+    except Exception as err:
+        print(f"Unexpected error opening {file_path} is", repr(err))
+        sys.exit(1)
+
+    return lines
+
+
+def read_file_to_str(file_path):
+    lines = read_file(file_path)
+    file_str = ""
+    for line in lines:
+        file_str += line
+
+    return file_str
