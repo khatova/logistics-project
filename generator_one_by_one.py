@@ -10,13 +10,13 @@ from make_plans import run
 def get_random_tuple(x,y,robot=False):
     if robot:
         i = random.randint(1, x)
-        j = y
+        j = random.choice([1,y])
     else:
-        i = random.randint(2, x - 1)
-        j = random.randint(2, y - 2)
+        i = random.randint(3, x - 1)
+        j = random.randint(3, y - 2)
     return (i,j)
 
-def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells={}):
+def rules_generator(x=8,y=8,id_of_agent=1,shelf_cells={}, robot_cells={}):
     rules = []
     count = 0
     for j in range(y):
@@ -44,8 +44,8 @@ def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells={}):
     for ru in [rule1, rule2, rule3,rule4,rule5,rule6]:
         rules.append(ru.to_string())
 
-    rule = Rule('pickingStation',1,'at',(int((x+1)/2),1))
-    rules.append(rule.to_string())
+    #rule = Rule('pickingStation',1,'at',(int((x+1)/2),1))
+    #rules.append(rule.to_string())
 
     return rules, shelf_cells, robot_cells
 

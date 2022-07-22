@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import os, sys, getopt, argparse
+import os, sys, re, getopt, argparse
 from utils import aesthetic, visualize,run_cmd, delete_file
 from independence_day import pipeline
 
@@ -47,14 +47,15 @@ def run_from_cluster(directory):
         sys.exit(0)
     else:
         stopwords = ['solution', 'cluster', 'merged', 'merger', '.DS_Store']
-        path = os.path.join("plans/", directory)
+        path = os.path.join("plans//", directory)
         files = os.listdir(os.path.join(path,'cluster'))
         new_moves_table = os.path.join(path, "new_moves_table.lp")
         count = 0
         for f in files:
             if any(sw in f for sw in stopwords):
                 continue
-            temp_file = os.path.join(path,'temp_file.lp')
+            robot = re.findall(r'\d+', f)[0]
+            temp_file = os.path.join(path,robot+'_temp_file.lp')
             count += 1
             illegal_table = os.path.join("plans", directory, "illegal_table.lp")
             agent = os.path.join(path,'cluster', f)
@@ -65,6 +66,9 @@ def run_from_cluster(directory):
             aesthetic(temp_file)
             add_new_predicates(temp_file,illegal_table,'illegal')
             add_new_predicates(temp_file,new_moves_table,'move')
+            if temp_file contains 'last_position':
+                update_init(original_file,  last_position = get_last_position(temp_file))
+                run_clingo(original_file,illegal_table, new_encodings, new_moves_table)
 
         occurs_table = os.path.join(path, 'occurs_table.lp')
         command = "clingo --out-atomf='%s.' -V0 h_occurs_out.lp " + new_moves_table + " > " + occurs_table

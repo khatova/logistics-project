@@ -1,0 +1,13 @@
+new_illegal((2,6),0).
+new_illegal((3,6),1).
+new_illegal((3,5),2).
+new_illegal((4,5),3).
+new_illegal((5,5),4).
+new_illegal((5,4),5).
+new_illegal((5,3),6).
+new_move(3,(1,0),1).
+new_move(3,(0,-1),2).
+new_move(3,(1,0),3).
+new_move(3,(1,0),4).
+new_move(3,(0,-1),5).
+new_move(3,(0,-1),6).

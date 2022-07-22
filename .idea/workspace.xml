@@ -6,30 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="shelf in more space">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MAPP.py" beforeDir="false" afterPath="$PROJECT_DIR$/MAPP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator_one_by_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator_one_by_one.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hierarchical.py" beforeDir="false" afterPath="$PROJECT_DIR$/hierarchical.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hierarchical_output.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/independence_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/independence_day.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/independence_detector.lp" beforeDir="false" afterPath="$PROJECT_DIR$/independence_detector.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_original_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_original_plans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_plans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merger_hierarchical.lp" beforeDir="false" afterPath="$PROJECT_DIR$/hierarchical_merger.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/cluster/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_10.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/cluster/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_12.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/cluster/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_13.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/cluster/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_15.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/cluster/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_19.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/cluster/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_6.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/cluster/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_8.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_16.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/med_x20_y20_n400_r20_s20_ps1_pr20_u20_o20_l20_N001_18.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/medium/medium_independencies_solution.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/poland/merged_plans.lp" beforeDir="false" afterPath="$PROJECT_DIR$/h_newmoves_out.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/poland/poland_independencies_solution.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/poland/temp_plans.lp" beforeDir="false" afterPath="$PROJECT_DIR$/h_occurs_out.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_clingo.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_clingo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_clingo_clusters.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_clingo_clusters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/poland/merged_plans.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/poland/merged_plans.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/poland/temp_file.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/separated_nona_only_plan_16_conflicts.lp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/planspolandtemp_file.lp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +65,29 @@
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.generator_one_by_one">
+  <component name="RunManager" selected="Python.MAPP_1ss">
+    <configuration name="MAPP_1ss" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="logistics-project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MAPP_1ss.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="desk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="logistics-project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -120,28 +124,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/desktop.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="generator_command" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="logistics-project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\ricoc\miniconda3\envs\venv\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\ricoc\PycharmProjects\logistics-project\generator_command.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,11 +178,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.MAPP_1ss" />
         <item itemvalue="Python.generator_one_by_one" />
         <item itemvalue="Python.desktop" />
         <item itemvalue="Python.generator_file" />
         <item itemvalue="Python.desk" />
-        <item itemvalue="Python.generator_command" />
       </list>
     </recent_temporary>
   </component>
@@ -246,6 +228,7 @@
       <workItem from="1658158443142" duration="350000" />
       <workItem from="1658207833050" duration="13603000" />
       <workItem from="1658327754407" duration="6132000" />
+      <workItem from="1658501154616" duration="2271000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
@@ -316,5 +299,6 @@
     <SUITE FILE_PATH="coverage/logistics_project$desktop.coverage" NAME="desktop Coverage Results" MODIFIED="1656101239389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/logistics_project$generator_one_by_one.coverage" NAME="generator_one_by_one Coverage Results" MODIFIED="1656506699018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/logistics_project$desk.coverage" NAME="desk Coverage Results" MODIFIED="1653117627023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/logistics_project$MAPP_1ss.coverage" NAME="MAPP_1ss Coverage Results" MODIFIED="1658501239102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
