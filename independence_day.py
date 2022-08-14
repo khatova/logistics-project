@@ -14,7 +14,7 @@ def run(directory, output):
         path = os.path.join("plans/",directory)
         print("DEBUG: Path {}".format(path))
         files = os.listdir(path)
-        stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store']
+        stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store','bucket']
         for f in files:
             quit = False
             for sw in stopwords:
@@ -47,7 +47,7 @@ def cluster(path):
     conflicted_robots = list(conflicted_robots_set)
     print("Conflicted robots {}".format(conflicted_robots))
 
-    stopwords = ['solution', 'cluster', 'merger', '.DS_Store']
+    stopwords = ['solution', 'cluster', 'merger', '.DS_Store','bucket']
     for f in files:
         quit = False
         for sw in stopwords:
@@ -59,7 +59,6 @@ def cluster(path):
             if str(cr) in f:
                 temp = os.path.join(path, f)
                 cmd = "move {} {}".format(temp,cluster_path)
-                print(cmd)
                 run_cmd(cmd)
 
 def illegal_table(file_path, path):
@@ -79,13 +78,13 @@ def empty_cluster(path):
     for f in files:
         temp = os.path.join(cluster_path, f)
         cmd = "move {} {}".format(temp, path)
-        print(cmd)
         run_cmd(cmd)
 
 def pipeline(directory):
     path = os.path.join("plans", directory)
     output = os.path.join(path, directory + "_independencies_solution.lp")
-    empty_cluster(path)
+    if os.path.isdir(os.path.join(path,'cluster')):
+        empty_cluster(path)
     run(directory, output)
     aesthetic(output)
     illegal_table(output, path)

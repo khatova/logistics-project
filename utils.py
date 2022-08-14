@@ -49,23 +49,26 @@ def delete_instances(path):
             os.remove(os.path.join(path,file))
 
 def remove_node(path,coor):
+    removed_nodes = []
     with open(path, 'r') as file:
         lines = file.readlines()
         for line in lines:
             if str(coor) in line and 'node' in line:
+                removed_nodes.append(line)
                 lines.remove(line)
     with open(path, 'w') as file:
         for line in lines:
             line = line.replace("'", "")
             file.write(line)
+    return removed_nodes
 
 def run_cmd(command):
     stream = os.popen(command)
     output = stream.read()
-    if output == "" or output == None:
-        print("Command runned without output")
-    else:
-        print("Command runned with output... : {}".format(output))
+    #if output == "" or output == None:
+    #    print("Command runned without output")
+    #else:
+    #    print("Command runned with output... : {}".format(output))
 
 def add_lines(input,output):
     with open(input, 'r') as file:
