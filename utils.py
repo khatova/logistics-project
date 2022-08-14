@@ -1,4 +1,5 @@
-import os, shutil
+import os, shutil, sys
+
 
 def empty_folder(path):
     for filename in os.listdir(path):
@@ -32,7 +33,7 @@ def aesthetic(location):
                 file.write(rule + "\n")
 
 def visualize(plan):
-    command = "".join(["viz  -p ",plan])
+    command = "".join(["viz  -p ", plan])
     print("Command: {}".format(command))
 
     stream = os.popen(command)
@@ -46,9 +47,9 @@ def delete_instances(path):
     files = os.listdir(path)
     for file in files:
         if 'instance' in file:
-            os.remove(os.path.join(path,file))
+            os.remove(os.path.join(path, file))
 
-def remove_node(path,coor):
+def remove_node(path, coor):
     removed_nodes = []
     with open(path, 'r') as file:
         lines = file.readlines()
@@ -61,6 +62,7 @@ def remove_node(path,coor):
             line = line.replace("'", "")
             file.write(line)
     return removed_nodes
+
 
 def run_cmd(command):
     stream = os.popen(command)
@@ -85,3 +87,22 @@ def remove_repeated(path):
     with open(path, 'w') as file:
         for line in lines:
             file.write(line)
+
+def read_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+    except Exception as err:
+        print(f"Unexpected error opening {file_path} is", repr(err))
+        sys.exit(1)
+
+    return lines
+
+
+def read_file_to_str(file_path):
+    lines = read_file(file_path)
+    file_str = ""
+    for line in lines:
+        file_str += line
+
+    return file_str
