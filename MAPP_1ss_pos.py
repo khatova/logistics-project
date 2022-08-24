@@ -53,7 +53,7 @@ def run_command(command):
 def save_ps(m, progr_step):
     global prev_ps_model
     for symbol in m.symbols(shown=True):
-        if symbol.name in ["total_num_steps", "initial_step", "pos"]:
+        if symbol.name in ["total_num_steps", "initial_step", "pos", "prev_position", "repositioning_done"]:
             prev_ps_model.append(symbol)
 
 
@@ -108,9 +108,12 @@ def main(argv):
             print("No active robots at progression step {ps}. Preparing output...".format(ps=progr_step))
             break
 
+        prev_ps_model = []
+
         progression_step(progr_step, ctl, parts)
 
-        ctl.solve(on_model=lambda model: save_ps(model, progr_step))
+        #ctl.solve(on_model=lambda model: save_ps(model, progr_step))
+
 
     with open(out_pos_file, "w") as file:
         for line in prev_ps_model:
@@ -137,6 +140,7 @@ def main(argv):
 def on_model(m, progr_step):
     global ps_solved
     global active_robots
+    global prev_ps_model
     active_robots = []
     for symbol in m.symbols(shown=True):
         if symbol.name == "repositioning_done":
@@ -147,8 +151,12 @@ def on_model(m, progr_step):
         if symbol.name == "active_robot":
             r_symbol = symbol.arguments[0]
             ps_symbol = symbol.arguments[1]
-            if ps_symbol.arguments[0] == Number(progr_step + 1):
+            if ps_symbol.arguments[0] == Number(progr_step):
                 active_robots.append(r_symbol.number)
+
+        if symbol.name in ["total_num_steps", "initial_step", "pos", "prev_position", "repositioning_done"]:
+            prev_ps_model.append(symbol)
+
     print(m)
 
 
@@ -156,21 +164,22 @@ def progression_step(progr_step, ctl, parts):
     parts.append(("pstep", [Number(progr_step)]))
     parts.append(("sstep", [Number(progr_step), Number(0)]))
     ctl.ground(parts)
+    ctl.solve(on_model=print)
 
     global ps_solved
     ps_solved = False
     substep = 1
     while not ps_solved:
+        parts.remove(("sstep", [Number(progr_step), Number(substep-1)]))
         parts.append(("sstep", [Number(progr_step), Number(substep)]))
         ctl.ground(parts)
-        #print(substep)
+        print(substep)
+        substep += 1
         ctl.solve(on_model=lambda model: on_model(model, progr_step))
 
         # if a.satisfiable:
         #    ps_solved = True
         #    break
-
-        substep += 1
 
     return True
 
