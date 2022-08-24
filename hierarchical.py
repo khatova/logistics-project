@@ -1,19 +1,20 @@
 #!/usr/bin/python
 
-import os, sys, re, getopt, argparse
+import os, sys, re, json, getopt, argparse
+from datetime import date, datetime
 from utils import aesthetic, visualize, run_cmd, delete_file
 from independence_day import pipeline
 from rule import Rule
 
 
-def run_independents(directory):
+def run_independents(directory,horizon=15):
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
     if directory not in dirs:
         print("Directory not found. Please select one of these options: ")
         print(dirs)
         sys.exit(0)
     else:
-        command = "clingo --out-atomf='%s.' -V0 -c horizon=15 "
+        command = "clingo --out-atomf='%s.' -V0 -c horizon={} ".format(horizon)
         path = os.path.join("plans", directory)
         stopwords = ['solution', 'cluster', 'merger', 'merged', 'table', '.DS_Store', 'bucket']
         files = os.listdir(path)
@@ -55,7 +56,7 @@ def get_last_position(path):
     return result
 
 
-def run_from_cluster(directory,bucket):
+def run_from_cluster(directory,bucket, horizon=15):
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
     if directory not in dirs:
         print("Directory not found. Please select one of these options: ")
@@ -73,12 +74,13 @@ def run_from_cluster(directory,bucket):
             if any(sw in f for sw in stopwords):
                 continue
             robot = re.findall(r'\d+', f)[0]
+            print("Robot : {}".format(robot))
             original_plan = os.path.join(cluster_path, f)
             temp_file = os.path.join(bucket, robot + '_temp_file.lp')
             count += 1
             illegal_table = os.path.join("plans", directory, "illegal_table.lp")
             agent = os.path.join(path, 'cluster', f)
-            command = "clingo --out-atomf='%s.' -V0 -c horizon=15 hierarchical_merger.lp "
+            command = "clingo --out-atomf='%s.' -V0 -c horizon={} hierarchical_merger.lp ".format(horizon)
             command += illegal_table + " " + agent + " > " + temp_file
             print("Command: {}".format(command))
             run_cmd(command)
@@ -95,8 +97,16 @@ def run_from_cluster(directory,bucket):
                 updated_instance = os.path.join(bucket, 'updated_' + f)
                 update_init(path,original_plan, robot, tuple_last_position, updated_instance)
                 new_plan = os.path.join(bucket, 'new_plan_' + robot + '.lp')
-                run_hierarchical_clingo(updated_instance, illegal_table, new_encodings, last_time, new_plan)
+                init_horizon = str(int(int(horizon)/2))
+                end_horizon =  str(int(horizon)*2)
+                for i in range(init_horizon,end_horizon):
+                    run_hierarchical_clingo(updated_instance, illegal_table, new_encodings, last_time, new_plan, i)
+                    with open(new_plan,'r') as plan:
+                        lines = plan.readlines()
+                        if "UNSATISFIBLE" not in lines:
+                            break
                 plan_to_temp(new_plan,temp_file)
+                #input("after encoding...")
             add_new_predicates(temp_file, illegal_table, 'illegal')
             add_new_predicates(temp_file, new_moves_table, 'move')
 
@@ -146,8 +156,8 @@ def plan_to_temp(plan,temp):
 
 
 
-def run_hierarchical_clingo(up_plan, illegal, encoding, last_time, new_plan):
-    command = "clingo --out-atomf='%s.' -V0 -c horizon=15 -c lasttime="
+def run_hierarchical_clingo(up_plan, illegal, encoding, last_time, new_plan,horizon):
+    command = "clingo --out-atomf='%s.' -V0 -c horizon={} -c lasttime=".format(horizon)
     command += last_time + " " + up_plan + " " + illegal + " " + encoding + " > " + new_plan
     print("Run Hierarchical " + command)
     run_cmd(command)
@@ -231,16 +241,25 @@ def clean_bucket(directory):
     for file in files:
         delete_file(os.path.join(path, file))
 
+def total_number_of_moves(path):
+    steps = 0
+    with open(path, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if 'occurs' in line:
+                steps += 1
+    return steps
 
 def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
     print("Starting the program")
     directory = 'hierarchical'
+    horizon = 15
 
     help_line = 'hierarchical.py -d <directory>'
 
     try:
-        opts, args = getopt.getopt(argv, "hd:c:")
+        opts, args = getopt.getopt(argv, "hd:c:z:")
     except getopt.GetoptError:
         print(help_line)
         sys.exit(2)
@@ -250,14 +269,17 @@ def main(argv):
             sys.exit()
         elif opt == '-d':
             directory = arg
+        elif opt == '-z':
+            horizon = arg
 
-    temporal_plan = os.path.join("plans/", directory, 'temp_plans_solution.lp')
-    output_plan = os.path.join("plans/", directory, 'merged_plans.lp')
-    new_moves_table = os.path.join("plans/", directory, 'new_moves_table.lp')
-    bucket = os.path.join("plans/", directory, 'bucket')
+    start_time = datetime.now()
+    path = os.path.join("plans/", directory)
+    temporal_plan = os.path.join(path, 'temp_plans_solution.lp')
+    output_plan = os.path.join(path, 'merged_plans.lp')
+    new_moves_table = os.path.join(path, 'new_moves_table.lp')
+    bucket = os.path.join(path, 'bucket')
     print("Directory: {}".format(directory))
     print("Output_plan: {}".format(output_plan))
-
     clean(directory)
     if not os.path.exists(bucket):
         os.makedirs(bucket)
@@ -267,12 +289,19 @@ def main(argv):
     delete_file(temporal_plan)
     delete_file(output_plan)
     delete_file(new_moves_table)
-    run_independents(directory)
-    run_from_cluster(directory,bucket)
+    run_independents(directory,horizon)
+    run_from_cluster(directory,bucket,horizon)
     write_final_file(directory, output_plan)
     aesthetic(output_plan)
+    end_time = datetime.now()
+    duration = (end_time - start_time)
+    print(f"Process lasted {duration} seconds")
+    steps = total_number_of_moves(output_plan)
+    log_json = {"directory":directory, "timestamp":start_time, "enabled_time":duration, "steps":steps}
+    print("Steps: {}".format(steps))
+    with open('log_file.txt','a') as file:
+        file.write(os.path.join(path,'merged_plans.lp') + '\t' + str(duration) + '\n')
     visualize(output_plan)
-
 
 if __name__ == "__main__":
     main(sys.argv[1:])

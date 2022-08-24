@@ -38,10 +38,10 @@ def visualize(plan):
 
     stream = os.popen(command)
     output = stream.read()
-    if output == "" or output == None:
-        print("Command runned without output")
-    else:
-        print("Command runned with output... : {}".format(output))
+    #if output == "" or output == None:
+    #    print("Command runned without output")
+    #else:
+    #    print("Command runned with output... : {}".format(output))
 
 def delete_instances(path):
     files = os.listdir(path)

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import os, sys, getopt, argparse
+import os, sys, re, getopt, argparse
 from utils import aesthetic, run_cmd
 
 def run(directory, output):
@@ -12,19 +12,14 @@ def run(directory, output):
     else:
         command = "clingo --out-atomf='%s.' -V0 -c horizon=15 "
         path = os.path.join("plans/",directory)
-        print("DEBUG: Path {}".format(path))
         files = os.listdir(path)
         stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store','bucket']
         for f in files:
-            quit = False
-            for sw in stopwords:
-                if sw in f:
-                    quit = True
-            if quit == True:
+            if any(sw in f for sw in stopwords):
                 continue
             command += os.path.join(path,f) + " "
         command += "independence_detector.lp" + " > " + output
-        print("Command: {}".format(command))
+        #print("Command: {}".format(command))
         run_cmd(command)
 
 def cluster(path):
@@ -33,30 +28,25 @@ def cluster(path):
     if not os.path.exists(cluster_path):
         os.mkdir(cluster_path)
     files = os.listdir(path)
-    conflicted_robots_set = set([])
+    conflicted_robots = []
     for f in files:
         if "independencies_solution" in f:
             temp = os.path.join(path,f)
             with open(temp,'r',encoding='utf-8') as file:
                 for line in file:
                     if "dependent" in line and "independent" not in line:
-                        robots = line[10:-3].split(",")
-                        for r in robots:
-                            conflicted_robots_set.add(int(r))
+                        robot = re.findall(r'\d+', line)[0]
+                        conflicted_robots.append(robot)
 
-    conflicted_robots = list(conflicted_robots_set)
     print("Conflicted robots {}".format(conflicted_robots))
 
-    stopwords = ['solution', 'cluster', 'merger', '.DS_Store','bucket']
+    stopwords = ['solution', 'cluster', 'illegal', 'reserve', 'merger', '.DS_Store','bucket']
     for f in files:
-        quit = False
-        for sw in stopwords:
-            if sw in f:
-                quit = True
-        if quit == True:
+        if any(sw in f for sw in stopwords):
             continue
+        agent = re.findall(r'\d+', f)[0]
         for cr in conflicted_robots:
-            if str(cr) in f:
+            if cr == agent:
                 temp = os.path.join(path, f)
                 cmd = "move {} {}".format(temp,cluster_path)
                 run_cmd(cmd)
