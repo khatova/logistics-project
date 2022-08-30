@@ -1,4 +1,4 @@
-#include <incmode>.
+%#include <incmode>.
 #program base.
 
 % parts of asprilo input
@@ -46,8 +46,7 @@ private_zone(R,ps(progression_step),ss(sub_step),C) :- private_zone(R,ps(progres
 
 % A. WAIT if the robot was pushed from its initial path during the current progression step
 %pushed(R,ps(PS),ss(SS)) :- push(R, _, _, ps(PS), ss(SS')), substep(SS), substep(SS'), SS'<SS.
-wait1(R,ps(progression_step),ss(sub_step)) :- push(R,C1,C2,I,ps(progression_step),ss(SS')),substep(progression_step,sub_step),
-				substep(progression_step,SS'), SS'<sub_step,
+wait1(R,ps(progression_step),ss(sub_step)) :- push(R,C1,C2,I,ps(progression_step),ss(SS')), SS'<sub_step,
 				not robot_push(R,ps(progression_step),ss(sub_step)), #false : progr_done(ps(progression_step),ss(SS'')), SS''<=sub_step.
 
 % B. WAIT if next step belongs to the private zone of a robot with higher priority
@@ -73,11 +72,11 @@ initial_step1(R,T,ps(progression_step),ss(sub_step)) :- time_(T), initial_step(R
 %no_next_blank_2(R,C,ps(PS),ss(SS+1)) :- new_position(R',C,ps(PS),ss(SS+1)), R' != R.
 
 % 
-next_occupied(R,C,ps(progression_step),ss(sub_step)) :- new_position(R,C',ps(progression_step),ss(sub_step-1)), new_position(R',C,ps(progression_step),ss(sub_step-1)),
+next_occupied(R,C,ps(progression_step),ss(sub_step)) :- pos(R,C',ps(progression_step),ss(sub_step-1)), pos(R',C,ps(progression_step),ss(sub_step-1)),
 				initial_step(R,T-1,ps(progression_step),ss(sub_step-1)), position(robot(R),C,T),
 				initial_step(R',T'-1,ps(progression_step),ss(sub_step-1)), position(robot(R'),C',T').
 
-next_occupied(R,C,ps(progression_step),ss(sub_step)) :- new_position(R,C',ps(progression_step),ss(sub_step-1)), new_position(R',C,ps(progression_step),ss(sub_step-1)),
+next_occupied(R,C,ps(progression_step),ss(sub_step)) :- pos(R,C',ps(progression_step),ss(sub_step-1)), pos(R',C,ps(progression_step),ss(sub_step-1)),
 				initial_step(R,T-1,ps(progression_step),ss(sub_step-1)), position(robot(R),C,T), wait(R',ps(progression_step),ss(sub_step-1)).
 
 %{next_blank1(R,C,ps(PS),ss(SS+1))} :- progrstep(PS), substep(SS), initial_step(R,T-1,ps(PS),ss(SS)), position(robot(R),C,T),
@@ -89,7 +88,8 @@ next_blank(R,C,ps(progression_step),ss(sub_step)) :- initial_step(R,T-1,ps(progr
 				not next_occupied(R,C,ps(progression_step),ss(sub_step)), not robot_push(R,ps(progression_step),ss(sub_step)),
 				#false : new_position(R',C,ps(progression_step),ss(sub_step)), R' != R;
 				#false : private_zone(R'',ps(progression_step),ss(sub_step),C), r1_higherthan_r2(R'',R);
-				#false : need_blank(R''',C,ps(progression_step),ss(sub_step)), r1_higherthan_r2(R''',R).
+				#false : need_blank(R''',C,ps(progression_step),ss(sub_step)), r1_higherthan_r2(R''',R);
+				not need_blank(R,_,ps(progression_step),ss(sub_step)).
 
 % in previous line "not new_position()"" maybe is redundant
 movement(R,C,ps(progression_step),ss(sub_step)) :- next_blank(R,C,ps(progression_step),ss(sub_step)), not wait(R,ps(progression_step),ss(sub_step)).
@@ -106,6 +106,7 @@ initial_step2(R,T,ps(progression_step),ss(sub_step)) :- time_(T), initial_step(R
 
 pushed_before(R,ps(progression_step),ss(sub_step)) :- push(R,C1,C2,I,ps(progression_step),ss(SS')), SS'<sub_step, used_pos(C1), used_pos(C2).
 need_blank(R,C,ps(progression_step),ss(sub_step)) :- initial_step(R,T,ps(progression_step),ss(sub_step-1)), position(robot(R),C,T+1),
+				R1!=R, new_position(R1,C,ps(progression_step),ss(sub_step-1)), not movement(R1,C1,ps(progression_step),ss(sub_step)), C!=C1, used_pos(C1),
 				#false: movement(R,C',ps(progression_step),ss(sub_step)), used_pos(C'); not pushed_before(R,ps(progression_step),ss(sub_step)), 
 				#false : progr_done(ps(progression_step),ss(SS')), SS' <= sub_step;
 				#false : wait(R,ps(progression_step),ss(SS')), SS'<=sub_step.
@@ -248,6 +249,9 @@ prev_position(R,C,ps(progression_step),ss(0)) :- prev_position3(R,C,ps(progressi
 active_robot(R,ps(progression_step),ss(sub_step)) :- pos(R,C,ps(progression_step),ss(sub_step-1)),repositioning_done(ps(progression_step),ss(sub_step-1)),
 				position(shelf(R),C',0), C' != C.
 
+%:- pos(R1,C,ps(progression_step),ss(sub_step)), pos(R2,C,ps(progression_step),ss(sub_step)), R1!=R2.
+:- pos(R,C,ps(progression_step),ss(sub_step-1)), pos(R,_,ps(progression_step),ss(0)), not pos(R,_,ps(progression_step),ss(sub_step)), 
+				not position(shelf(R),C,0), sub_step>0, not repositioning_done(ps(progression_step),ss(sub_step-1)).
 
 #show.
 #show init/2.
