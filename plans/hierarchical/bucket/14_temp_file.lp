@@ -1,4 +1,5 @@
 conflict(14,6).
+conflict(14,7).
 last_position(14,(12,7),5).
 new_illegal(14,(16,8),0).
 new_illegal(14,(16,7),1).
@@ -31,8 +32,8 @@ new_illegal_from(14,(13,7),(14,7),4).
 new_illegal_from(14,(12,7),(13,7),5).
 new_move(14,(-1,0),6).
 new_move(14,(-1,0),7).
-new_move(14,(0,-1),8).
-new_move(14,(-1,0),9).
+new_move(14,(-1,0),8).
+new_move(14,(0,-1),9).
 new_move(14,(0,-1),10).
 new_move(14,(0,-1),11).
 new_move(14,(0,-1),12).
@@ -42,7 +43,7 @@ new_illegal(14,(12,7),5).
 new_illegal(14,(10,2),0).
 new_illegal(14,(11,7),6).
 new_illegal(14,(10,7),7).
-new_illegal(14,(10,6),8).
+new_illegal(14,(9,7),8).
 new_illegal(14,(9,6),9).
 new_illegal(14,(9,5),10).
 new_illegal(14,(9,4),11).
@@ -53,9 +54,9 @@ new_illegal_from(14,(11,7),(12,7),6).
 
 new_illegal_from(14,(10,7),(11,7),7).
 
-new_illegal_from(14,(10,6),(10,7),8).
+new_illegal_from(14,(9,7),(10,7),8).
 
-new_illegal_from(14,(9,6),(10,6),9).
+new_illegal_from(14,(9,6),(9,7),9).
 
 new_illegal_from(14,(9,5),(9,6),10).
 

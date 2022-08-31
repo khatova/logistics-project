@@ -2,8 +2,8 @@ position(robot(14),(12,7),5).
 position(shelf(14),(10,2),0).
 occurs(object(robot,14),action(move,(-1,0)),6).
 occurs(object(robot,14),action(move,(-1,0)),7).
-occurs(object(robot,14),action(move,(0,-1)),8).
-occurs(object(robot,14),action(move,(-1,0)),9).
+occurs(object(robot,14),action(move,(-1,0)),8).
+occurs(object(robot,14),action(move,(0,-1)),9).
 occurs(object(robot,14),action(move,(0,-1)),10).
 occurs(object(robot,14),action(move,(0,-1)),11).
 occurs(object(robot,14),action(move,(0,-1)),12).
@@ -11,7 +11,7 @@ occurs(object(robot,14),action(move,(0,-1)),13).
 occurs(object(robot,14),action(move,(1,0)),14).
 position(robot(14),(11,7),6).
 position(robot(14),(10,7),7).
-position(robot(14),(10,6),8).
+position(robot(14),(9,7),8).
 position(robot(14),(9,6),9).
 position(robot(14),(9,5),10).
 position(robot(14),(9,4),11).
@@ -20,8 +20,8 @@ position(robot(14),(9,2),13).
 position(robot(14),(10,2),14).
 new_illegal_from(14,(11,7),(12,7),6).
 new_illegal_from(14,(10,7),(11,7),7).
-new_illegal_from(14,(10,6),(10,7),8).
-new_illegal_from(14,(9,6),(10,6),9).
+new_illegal_from(14,(9,7),(10,7),8).
+new_illegal_from(14,(9,6),(9,7),9).
 new_illegal_from(14,(9,5),(9,6),10).
 new_illegal_from(14,(9,4),(9,5),11).
 new_illegal_from(14,(9,3),(9,4),12).

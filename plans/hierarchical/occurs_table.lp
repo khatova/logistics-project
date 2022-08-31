@@ -58,8 +58,8 @@ occurs(object(robot,13),action(move,(1,0)),3).
 occurs(object(robot,13),action(move,(1,0)),4).
 occurs(object(robot,13),action(move,(0,0)),5).
 occurs(object(robot,13),action(move,(1,0)),6).
-occurs(object(robot,13),action(move,(1,0)),7).
-occurs(object(robot,13),action(move,(0,-1)),8).
+occurs(object(robot,13),action(move,(0,-1)),7).
+occurs(object(robot,13),action(move,(1,0)),8).
 occurs(object(robot,13),action(move,(1,0)),9).
 occurs(object(robot,13),action(move,(1,0)),10).
 occurs(object(robot,13),action(move,(1,0)),11).
@@ -70,8 +70,8 @@ occurs(object(robot,14),action(move,(-1,0)),4).
 occurs(object(robot,14),action(move,(-1,0)),5).
 occurs(object(robot,14),action(move,(-1,0)),6).
 occurs(object(robot,14),action(move,(-1,0)),7).
-occurs(object(robot,14),action(move,(0,-1)),8).
-occurs(object(robot,14),action(move,(-1,0)),9).
+occurs(object(robot,14),action(move,(-1,0)),8).
+occurs(object(robot,14),action(move,(0,-1)),9).
 occurs(object(robot,14),action(move,(0,-1)),10).
 occurs(object(robot,14),action(move,(0,-1)),11).
 occurs(object(robot,14),action(move,(0,-1)),12).
