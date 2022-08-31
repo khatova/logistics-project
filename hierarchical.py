@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import os, sys, re, json, getopt, argparse
+from os.path import exists
 from datetime import date, datetime
 from utils import aesthetic, visualize, run_cmd, delete_file
 from independence_day import pipeline
@@ -25,7 +26,7 @@ def run_independents(directory,horizon=15):
 
         new_moves_table = os.path.join(path, "new_moves_table.lp")
         command = command + " h_newmoves_out.lp > " + new_moves_table
-        print("Command: {}".format(command))
+        #print("Command: {}".format(command))
         run_cmd(command)
         aesthetic(new_moves_table)
 
@@ -55,6 +56,34 @@ def get_last_position(path):
                 break
     return result
 
+def prioritize(cluster_path, stopwords):
+    # Order By Priority
+    files = os.listdir(cluster_path)
+    cluster_files = []
+    priority_dicc = {}
+    for f in files:
+        if any(sw in f for sw in stopwords):
+            continue
+        cluster_files.append(f)
+    costs = []
+    for cf in cluster_files:
+        with open(os.path.join(cluster_path, cf), 'r') as agent_file:
+            lines = agent_file.readlines()
+            cost = len(lines)
+            costs.append(cost)
+            priority_dicc[cf] = cost
+    print("Priority Dicc {}".format(priority_dicc))
+    costs.sort()
+    sorted_files = []
+    for c in costs:
+        for cf in cluster_files:
+            if priority_dicc[cf] == c and cf not in sorted_files:
+                sorted_files.append(cf)
+                break
+
+    return sorted_files
+
+
 
 def run_from_cluster(directory,bucket, horizon=15):
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
@@ -66,15 +95,18 @@ def run_from_cluster(directory,bucket, horizon=15):
         stopwords = ['solution', 'cluster', 'merged', 'merger', '.DS_Store','bucket']
         path = os.path.join("plans//", directory)
         cluster_path = os.path.join(path, 'cluster')
-        files = os.listdir(cluster_path)
+
         new_moves_table = os.path.join(path, "new_moves_table.lp")
         new_encodings = 'hierarchical_encoding.lp'
         count = 0
-        for f in files:
+
+        sorted_files = prioritize(cluster_path, stopwords)
+
+        for f in sorted_files:
             if any(sw in f for sw in stopwords):
                 continue
             robot = re.findall(r'\d+', f)[0]
-            print("Robot : {}".format(robot))
+            #print("Robot : {}".format(robot))
             original_plan = os.path.join(cluster_path, f)
             temp_file = os.path.join(bucket, robot + '_temp_file.lp')
             count += 1
@@ -82,12 +114,12 @@ def run_from_cluster(directory,bucket, horizon=15):
             agent = os.path.join(path, 'cluster', f)
             command = "clingo --out-atomf='%s.' -V0 -c horizon={} hierarchical_merger.lp ".format(horizon)
             command += illegal_table + " " + agent + " > " + temp_file
-            print("Command: {}".format(command))
+            #print("Command: {}".format(command))
             run_cmd(command)
             aesthetic(temp_file)
 
             last_position = get_last_position(temp_file)
-            print(last_position)
+            #print(last_position)
             #delete_file(temp_file)
             if 'arrived' not in last_position:
                 sub_position = last_position[15:-3]
@@ -97,22 +129,26 @@ def run_from_cluster(directory,bucket, horizon=15):
                 updated_instance = os.path.join(bucket, 'updated_' + f)
                 update_init(path,original_plan, robot, tuple_last_position, updated_instance)
                 new_plan = os.path.join(bucket, 'new_plan_' + robot + '.lp')
-                init_horizon = str(int(int(horizon)/2))
-                end_horizon =  str(int(horizon)*2)
+                #run_hierarchical_clingo(updated_instance, illegal_table, new_encodings, last_time, new_plan, horizon)
+                init_horizon = int(int(horizon)*3/4)
+                end_horizon =  int(int(horizon)*3/2)
+                #print("Robot: {} and new_plan {}".format(robot,new_plan))
                 for i in range(init_horizon,end_horizon):
-                    run_hierarchical_clingo(updated_instance, illegal_table, new_encodings, last_time, new_plan, i)
+                    run_hierarchical_clingo(updated_instance, illegal_table, new_encodings, last_time, new_plan, str(i))
                     with open(new_plan,'r') as plan:
                         lines = plan.readlines()
-                        if "UNSATISFIBLE" not in lines:
+                        if "UNSATISFIABLE" in lines[0]:
+                            #print("Robot {} with horizon {} is unsatisfiable".format(robot,i))
+                            continue
+                        else:
                             break
                 plan_to_temp(new_plan,temp_file)
-                #input("after encoding...")
             add_new_predicates(temp_file, illegal_table, 'illegal')
             add_new_predicates(temp_file, new_moves_table, 'move')
 
         occurs_table = os.path.join(path, 'occurs_table.lp')
         command = "clingo --out-atomf='%s.' -V0 h_occurs_out.lp " + new_moves_table + " > " + occurs_table
-        print("Command: {}".format(command))
+        #print("Command: {}".format(command))
         run_cmd(command)
         aesthetic(occurs_table)
 
@@ -159,7 +195,7 @@ def plan_to_temp(plan,temp):
 def run_hierarchical_clingo(up_plan, illegal, encoding, last_time, new_plan,horizon):
     command = "clingo --out-atomf='%s.' -V0 -c horizon={} -c lasttime=".format(horizon)
     command += last_time + " " + up_plan + " " + illegal + " " + encoding + " > " + new_plan
-    print("Run Hierarchical " + command)
+    #print("Run Hierarchical " + command)
     run_cmd(command)
     aesthetic(new_plan)
 
@@ -250,6 +286,40 @@ def total_number_of_moves(path):
                 steps += 1
     return steps
 
+def avg_moves_agents(path):
+    steps = 0
+    with open(path, 'r') as file:
+        lines = file.readlines()
+        steps_dicc = {}
+        saved_agents = []
+        for line in lines:
+            if 'occurs' in line:
+                agent = line.replace('(',' ').replace(')',' ').replace(',',' ').split()[3]
+                if agent not in saved_agents:
+                    steps_dicc[agent] = 1
+                    saved_agents.append(agent)
+                else:
+                    steps_dicc[agent] += 1
+    for key, value in steps_dicc.items():
+        steps += value
+
+    return steps/len(steps_dicc)
+
+def to_log(directory,start_time,duration, avg_steps, total_steps, log_file = 'log_file.json', method = 'hierarchical'):
+    log_dicc = {"directory": directory, "timestamp": start_time.strftime("%Y.%m.%d %H:%M:%S"), "enabled_time": duration,
+                "avg_steps" : avg_steps, "total_steps": total_steps, "method":method}
+    log_json = json.dumps(log_dicc)
+    print("Results: {}".format(log_dicc))
+    if not exists(log_file):
+        with open('log_file.json', 'w') as file:
+            dicc = {"records": []}
+            json.dump(dicc, file)
+    with open(log_file, 'r') as json_file:
+        json_data = json.load(json_file)
+        json_data["records"].append(log_json)
+    with open(log_file, 'w') as json_file:
+        json.dump(json_data, json_file, indent=4)
+
 def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
     print("Starting the program")
@@ -294,14 +364,11 @@ def main(argv):
     write_final_file(directory, output_plan)
     aesthetic(output_plan)
     end_time = datetime.now()
-    duration = (end_time - start_time)
-    print(f"Process lasted {duration} seconds")
-    steps = total_number_of_moves(output_plan)
-    log_json = {"directory":directory, "timestamp":start_time, "enabled_time":duration, "steps":steps}
-    print("Steps: {}".format(steps))
-    with open('log_file.txt','a') as file:
-        file.write(os.path.join(path,'merged_plans.lp') + '\t' + str(duration) + '\n')
-    visualize(output_plan)
+    duration = (end_time - start_time).total_seconds()
+    total_steps = total_number_of_moves(output_plan)
+    avg_steps = avg_moves_agents(output_plan)
+    to_log(directory,start_time,duration, avg_steps, total_steps,log_file = 'log_file.json')
+    #visualize(output_plan)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

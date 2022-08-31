@@ -129,7 +129,5 @@ def main(argv):
 
     visualize(os.path.join(path,'merged_plans.lp'))
 
-
-
 if __name__ == "__main__":
     main(sys.argv[1:])
