@@ -11,7 +11,7 @@ from make_plans import run
 def get_random_tuple(x,y,robot=False):
     if robot:
         i = random.randint(1, x)
-        j = y #random.choice([1,y])
+        j = random.choice([1,y])
     else:
         i = random.randint(2, x - 1)
         j = random.randint(2, y - 2)
@@ -85,9 +85,10 @@ def main(argv):
 
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
     if directory not in dirs:
-        print("Directory not found. Please select one of these options: ")
-        print(dirs)
-        sys.exit(0)
+        os.makedirs(os.path.join("plans",directory))
+        #print("Directory not found. Please select one of these options: ")
+        #print(dirs)
+        #sys.exit(0)
     output = os.path.join("plans/", directory)
     print("Directory: {}".format(directory))
     print("Output: {}".format(output))

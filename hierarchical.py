@@ -17,7 +17,7 @@ def run_independents(directory,horizon=15):
     else:
         command = "clingo --out-atomf='%s.' -V0 -c horizon={} ".format(horizon)
         path = os.path.join("plans", directory)
-        stopwords = ['solution', 'cluster', 'merger', 'merged', 'table', '.DS_Store', 'bucket']
+        stopwords = ['solution', 'cluster', 'merger', 'merged', 'table', '.DS_Store', 'bucket','.png','debug']
         files = os.listdir(path)
         for f in files:
             if any(sw in f for sw in stopwords):
@@ -92,7 +92,7 @@ def run_from_cluster(directory,bucket, horizon=15):
         print(dirs)
         sys.exit(0)
     else:
-        stopwords = ['solution', 'cluster', 'merged', 'merger', '.DS_Store','bucket']
+        stopwords = ['solution', 'cluster', 'merged', 'merger', '.DS_Store','bucket','.png','debug']
         path = os.path.join("plans//", directory)
         cluster_path = os.path.join(path, 'cluster')
 
@@ -226,7 +226,7 @@ def update_init(path,original_file, robot, position, updated_instance):
 def write_final_file(directory, output):
     path = os.path.join('plans/', directory)
     cluster_path = os.path.join('plans/', directory, 'cluster')
-    stopwords = ['solution', 'cluster', 'merger', 'merged', 'table', '.DS_Store','bucket','reserve']
+    stopwords = ['solution', 'cluster', 'merger', 'merged', 'table', '.DS_Store','bucket','reserve','.png','debug']
     init_lines = []
     files = os.listdir(path)
     for f in files:
@@ -368,7 +368,7 @@ def main(argv):
     total_steps = total_number_of_moves(output_plan)
     avg_steps = avg_moves_agents(output_plan)
     to_log(directory,start_time,duration, avg_steps, total_steps,log_file = 'log_file.json')
-    #visualize(output_plan)
+    visualize(output_plan)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

@@ -40,7 +40,7 @@ def cluster(path):
 
     print("Conflicted robots {}".format(conflicted_robots))
 
-    stopwords = ['solution', 'cluster', 'illegal', 'reserve', 'merger', '.DS_Store','bucket']
+    stopwords = ['solution', 'cluster', 'illegal', 'reserve', 'merger', '.DS_Store','bucket','.png','debug']
     for f in files:
         if any(sw in f for sw in stopwords):
             continue

@@ -1,0 +1,21 @@
+{
+    "records": [
+        "{\"directory\": \"large\", \"timestamp\": \"2022.08.28 19:00:39\", \"enabled_time\": 3.375655, \"avg_steps\": 10.5, \"total_steps\": 105, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"large\", \"timestamp\": \"2022.08.28 19:01:04\", \"enabled_time\": 3.391198, \"avg_steps\": 10.5, \"total_steps\": 105, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"large\", \"timestamp\": \"2022.08.28 19:01:13\", \"enabled_time\": 3.405411, \"avg_steps\": 10.5, \"total_steps\": 105, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"large\", \"timestamp\": \"2022.08.28 20:52:37\", \"enabled_time\": 4.489104, \"avg_steps\": 10.5, \"total_steps\": 105, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"large\", \"timestamp\": \"2022.08.28 20:52:46\", \"enabled_time\": 3.661569, \"avg_steps\": 10.5, \"total_steps\": 105, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"20x20\", \"timestamp\": \"2022.09.01 17:46:09\", \"enabled_time\": 47.608574, \"avg_steps\": 13.05, \"total_steps\": 261, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"20x20\", \"timestamp\": \"2022.09.01 17:49:39\", \"enabled_time\": 80.184946, \"avg_steps\": 15.95, \"total_steps\": 319, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"cat\", \"timestamp\": \"2022.09.01 17:57:13\", \"enabled_time\": 3.627728, \"avg_steps\": 9.5, \"total_steps\": 95, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"B_10x10\", \"timestamp\": \"2022.09.01 18:06:08\", \"enabled_time\": 3.358121, \"avg_steps\": 7.6, \"total_steps\": 76, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"12x12_dense\", \"timestamp\": \"2022.09.01 18:15:02\", \"enabled_time\": 4.462078, \"avg_steps\": 9.428571428571429, \"total_steps\": 132, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"10_ultra\", \"timestamp\": \"2022.09.01 19:01:21\", \"enabled_time\": 2.353378, \"avg_steps\": 8.615384615384615, \"total_steps\": 112, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"10\", \"timestamp\": \"2022.09.01 19:16:41\", \"enabled_time\": 5.571321, \"avg_steps\": 7.3, \"total_steps\": 146, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"10\", \"timestamp\": \"2022.09.01 20:35:27\", \"enabled_time\": 19.540391, \"avg_steps\": 8.0, \"total_steps\": 160, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"24_dense\", \"timestamp\": \"2022.09.01 20:42:26\", \"enabled_time\": 11.015865, \"avg_steps\": 9.916666666666666, \"total_steps\": 238, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"24_dense\", \"timestamp\": \"2022.09.01 21:26:12\", \"enabled_time\": 17.120462, \"avg_steps\": 10.25, \"total_steps\": 246, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"24_dense\", \"timestamp\": \"2022.09.01 21:29:35\", \"enabled_time\": 17.631202, \"avg_steps\": 10.333333333333334, \"total_steps\": 248, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"26_dense\", \"timestamp\": \"2022.09.01 21:36:38\", \"enabled_time\": 41.168772, \"avg_steps\": 11.192307692307692, \"total_steps\": 291, \"method\": \"hierarchical\"}"
+    ]
+}
