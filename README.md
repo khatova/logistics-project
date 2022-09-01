@@ -1,5 +1,8 @@
 # logistics-project
 
+## If you are other group please refer to the README in the folder INSTANCES_FOR_OTHER_GROUPS
+
+
 This is a repository for the project in knowledge representation and reasoning.
 We are trying to solve MAPF (multi agent path finding) problem using plan merging approach. You can learn more about MAPF here: https://ktiml.mff.cuni.cz/~bartak/AAAI2019/.
 

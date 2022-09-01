@@ -1,6 +1,6 @@
 Hello
 
-In this folder there are 2 different instances. Each instance has a plan for every robot.There are conflicts in each instance.
+In this folder there are 2 different instances. Each instance has a plan for every robot. There are conflicts in each instance.
 
 To run our merger for a instance with plans, like those examples, you need to follow this steps:
 
