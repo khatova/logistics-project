@@ -42,8 +42,8 @@ def main(argv):
         out_files = []
         for line in lines:
             # init(object(node, 21), value(at, (1, 3))).
-            m = re.search(r'init\(object\(node', line)
-            if m:
+            # init(object(shelf,2), value(at,(1,2))).
+            if re.search(r'init\(object\(node', line) or re.search(r'init\(object\(shelf', line):
                 common_lines.append(line)
             else:
                 # init(object(robot,1), value(at,(5,10))).
