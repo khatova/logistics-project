@@ -58,10 +58,11 @@ def main(argv):
     y=5
     n_agents=2
     vis = False
+    horizon = 15
     help_line = 'generator_one_by_one.py -d <directory> -x <x> -y <y> -n <n>'
 
     try:
-        opts, args = getopt.getopt(argv,"hd:x:y:n:v:")
+        opts, args = getopt.getopt(argv,"hd:x:y:n:v:z:")
     except getopt.GetoptError:
         print(help_line)
         sys.exit(2)
@@ -79,6 +80,8 @@ def main(argv):
             n_agents = int(arg)
         elif opt == '-v':
             vis = True
+        elif opt == '-z':
+            horizon = arg
 
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
     if directory not in dirs:
@@ -111,11 +114,11 @@ def main(argv):
         for id_r,(i,j) in robot_cells.items():
             if id_r != id+1:
                 robot_rule = Rule('node',id_r,'at',(i,j)).to_string()
-                print(f'Rule to delete: {robot_rule} from instance {id+1}')
+                #print(f'Rule to delete: {robot_rule} from instance {id+1}')
                 removed_nodes = remove_node(temp_out,(i,j))
                 for rn in removed_nodes:
                     deleted_nodes.append(rn)
-        run(temp_out, path, 'plan_only_'+str(id+1), 30)
+        run(temp_out, path, 'plan_only_'+str(id+1), horizon)
         aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'.lp'))
     nodes_to_delete = list(set(deleted_nodes))
     with open(os.path.join(path,'reserve_nodes.lp'),'w') as file:
@@ -125,8 +128,6 @@ def main(argv):
     merge_plans(directory=path,output_name='merged_plans.lp')
 
     visualize(os.path.join(path,'merged_plans.lp'))
-
-
 
 if __name__ == "__main__":
     main(sys.argv[1:])

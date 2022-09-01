@@ -50,7 +50,7 @@ moveto(C',C,T) :- nextto(C',D,C), position(R,C',T-1), move(R,D,T).
  %:- { position(R,C,T) : isRobot(R) }  > 1, position(C), time(T).
 
 % - auxiliaries -----------------------------------------------------------------
- :- { position(R,C,T) } != 1, isRobot(R), time(T).    % REDUNDANT but PERFORMANT?
+ %:- { position(R,C,T) } != 1, isRobot(R), time(T).    % REDUNDANT but PERFORMANT?
 
 % - illegal collision ------------------------------------------------------------
  is_illegal(R,C,T) :- position(R,C,T), illegal(_,C,T), isRobot(R), time(T).
@@ -64,11 +64,13 @@ processed(A,R,T) :- ordered(O,A), shelved(S,A), isRobot(R), position(S,C,0),
                   position(R,C,T).
 
  :- processed(A,R,T), move(R,_,T'), T' > T.
- :- processed(A,R,T), not move(R,_,T'), T' < T, time(T), time(T').
 
 processed(A)   :- processed(A,R,T).
 
 :- ordered(O,A), not processed(A).
+
+%num_moves(N) :- #count{T : move(R,C,T)} == N.
+%#minimize{ N : num_moves(N)}.
 
 %output
 #show.
@@ -78,6 +80,5 @@ processed(A)   :- processed(A,R,T).
 #show is_illegal/3.
 #show is_illegal_from/4.
 #show new_illegal_from/4.
-%#show cost/1.
 %#show move/3.
 #show occurs(object(robot,R), action(move,D),     T) :    move(robot(R),D,T).
