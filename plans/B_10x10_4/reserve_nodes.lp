@@ -1,0 +1,10 @@
+init(object(node,99),value(at,(9, 10))).
+init(object(node,91),value(at,(1, 10))).
+init(object(node,95),value(at,(5, 10))).
+init(object(node,97),value(at,(7, 10))).
+init(object(node,93),value(at,(3, 10))).
+init(object(node,92),value(at,(2, 10))).
+init(object(node,98),value(at,(8, 10))).
+init(object(node,100),value(at,(10, 10))).
+init(object(node,96),value(at,(6, 10))).
+init(object(node,94),value(at,(4, 10))).

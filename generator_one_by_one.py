@@ -7,16 +7,17 @@ from utils import empty_folder, aesthetic, visualize, delete_instances, remove_n
 from merge_plans import merge_plans
 from make_plans import run
 
+
 def get_random_tuple(x,y,robot=False):
     if robot:
         i = random.randint(1, x)
-        j = y
+        j = random.choice([1,y])
     else:
         i = random.randint(2, x - 1)
         j = random.randint(2, y - 2)
     return (i,j)
 
-def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells={}):
+def rules_generator(x=8,y=8,id_of_agent=1,shelf_cells={}, robot_cells={}):
     rules = []
     count = 0
     for j in range(y):
@@ -44,8 +45,8 @@ def rules_generator(x=5,y=5,id_of_agent=1,shelf_cells={}, robot_cells={}):
     for ru in [rule1, rule2, rule3,rule4,rule5,rule6]:
         rules.append(ru.to_string())
 
-    rule = Rule('pickingStation',1,'at',(int((x+1)/2),1))
-    rules.append(rule.to_string())
+    #rule = Rule('pickingStation',1,'at',(int((x+1)/2),1))
+    #rules.append(rule.to_string())
 
     return rules, shelf_cells, robot_cells
 
@@ -57,10 +58,11 @@ def main(argv):
     y=5
     n_agents=2
     vis = False
+    horizon = 15
     help_line = 'generator_one_by_one.py -d <directory> -x <x> -y <y> -n <n>'
 
     try:
-        opts, args = getopt.getopt(argv,"hd:x:y:n:v:")
+        opts, args = getopt.getopt(argv,"hd:x:y:n:v:z:")
     except getopt.GetoptError:
         print(help_line)
         sys.exit(2)
@@ -78,12 +80,15 @@ def main(argv):
             n_agents = int(arg)
         elif opt == '-v':
             vis = True
+        elif opt == '-z':
+            horizon = arg
 
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
     if directory not in dirs:
-        print("Directory not found. Please select one of these options: ")
-        print(dirs)
-        sys.exit(0)
+        os.makedirs(os.path.join("plans",directory))
+        #print("Directory not found. Please select one of these options: ")
+        #print(dirs)
+        #sys.exit(0)
     output = os.path.join("plans/", directory)
     print("Directory: {}".format(directory))
     print("Output: {}".format(output))
@@ -99,27 +104,31 @@ def main(argv):
             file.writelines(rules)
     print('shelf_cells: ', shelf_cells)
     print('robot_cells: ', robot_cells)
+    deleted_nodes = []
     for id in range(n_agents):
         temp_out = os.path.join(path, 'instance_nona_' + str(id + 1) + '.lp')
         for id_sh,(i,j) in shelf_cells.items():
             if (i,j) != shelf_cells[id+1]:
-                shelf_rule = Rule('node',id_sh,'at',(i,j)).to_string()
+                #shelf_rule = Rule('node',id_sh,'at',(i,j)).to_string()
                 #print(f'Rule to delete: {shelf_rule} from instance {id+1}')
                 remove_node(temp_out,(i,j))
         for id_r,(i,j) in robot_cells.items():
             if id_r != id+1:
                 robot_rule = Rule('node',id_r,'at',(i,j)).to_string()
-                print(f'Rule to delete: {robot_rule} from instance {id+1}')
-                remove_node(temp_out,(i,j))
-        run(temp_out, path, 'plan_only_'+str(id+1), 30)
+                #print(f'Rule to delete: {robot_rule} from instance {id+1}')
+                removed_nodes = remove_node(temp_out,(i,j))
+                for rn in removed_nodes:
+                    deleted_nodes.append(rn)
+        run(temp_out, path, 'plan_only_'+str(id+1), horizon)
         aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'.lp'))
-
+    nodes_to_delete = list(set(deleted_nodes))
+    with open(os.path.join(path,'reserve_nodes.lp'),'w') as file:
+        file.writelines(nodes_to_delete)
+        aesthetic(os.path.join(path,'reserve_nodes.lp'))
     delete_instances(path=path)
     merge_plans(directory=path,output_name='merged_plans.lp')
 
     visualize(os.path.join(path,'merged_plans.lp'))
-
-
 
 if __name__ == "__main__":
     main(sys.argv[1:])

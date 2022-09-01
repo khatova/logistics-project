@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os, sys, getopt, argparse
-from utils import aesthetic, visualize
+from utils import aesthetic, visualize, run_cmd
 
 def run(instance,output_folder,output_name,horizon):
     action_path = "asprilo-encodings/m/action-M-no-constraints.lp"
@@ -13,13 +13,7 @@ def run(instance,output_folder,output_name,horizon):
     command = "clingo --out-atomf='%s.' -V0 -c horizon="
     command = command + str(horizon)+" "+action_path+" "+goal_path+" "+out_path +" "+instance+" > "+output_temp
     print("Command: {}".format(command))
-
-    stream = os.popen(command)
-    output = stream.read()
-    if output == "" or output == None:
-        print("Command runned without output")
-    else:
-        print("Command runned with output... : {}".format(output))
+    run_cmd(command)
 
     with open(output_temp, 'r+') as file:
         lines = file.readlines()

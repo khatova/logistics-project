@@ -9,11 +9,7 @@ def merge_plans(directory, output_name='merged_plans.lp'):
         files = os.listdir(directory)
         stopwords = ['non','solution', 'cluster', 'merger', '.DS_Store']
         for file in files:
-            quit = False
-            for sw in stopwords:
-                if sw in file:
-                    quit = True
-            if quit == True:
+            if any(sw in file for sw in stopwords):
                 continue
             print(f'Processing file {file} in folder {directory}')
             with open(os.path.join(directory,file), 'r') as f:
@@ -42,15 +38,11 @@ def main(argv):
             directory = arg
     path = os.path.join("plans/", directory)
     files = os.listdir(path)
-    stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store']
-    for f in files:
-        quit = False
-        for sw in stopwords:
-            if sw in f:
-                quit = True
-        if quit == True:
+    stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store','cluster','bucket','debug']
+    for file in files:
+        if any(sw in file for sw in stopwords):
             continue
-        aesthetic(os.path.join(path,f))
+        aesthetic(os.path.join(path,file))
 
     merge_plans(path)
 

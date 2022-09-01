@@ -1,0 +1,17 @@
+position(robot(7),(8,3),4).
+position(shelf(7),(5,5),0).
+occurs(object(robot,7),action(move,(0,1)),5).
+occurs(object(robot,7),action(move,(-1,0)),6).
+occurs(object(robot,7),action(move,(-1,0)),7).
+occurs(object(robot,7),action(move,(-1,0)),8).
+occurs(object(robot,7),action(move,(0,1)),9).
+position(robot(7),(8,4),5).
+position(robot(7),(7,4),6).
+position(robot(7),(6,4),7).
+position(robot(7),(5,4),8).
+position(robot(7),(5,5),9).
+new_illegal_from(7,(8,4),(8,3),5).
+new_illegal_from(7,(7,4),(8,4),6).
+new_illegal_from(7,(6,4),(7,4),7).
+new_illegal_from(7,(5,4),(6,4),8).
+new_illegal_from(7,(5,5),(5,4),9).

@@ -1,0 +1,58 @@
+robot(R)                     :- init(object(robot,R),          _).
+shelf(S)                     :- init(object(shelf,S),          _).
+
+    isRobot(robot(R)) :- robot(R).
+    isShelf(shelf(S)) :- shelf(S).
+
+position(           (X,Y))   :- init(object(node,_),           value(at,(X,Y))).
+
+position(  robot(R),(X,Y),0) :- init(object(robot,R),          value(at,(X,Y))).
+position(  shelf(S),(X,Y),0) :- init(object(shelf,S),          value(at,(X,Y))).
+
+maxsteps(15).
+
+direction((X,Y)) :- X=-1..1, Y=-1..1, |X+Y|=1.
+nextto((X,Y),(X',Y'),(X+X',Y+Y')) :- position((X,Y)), direction((X',Y')), position((X+X',Y+Y')).
+nextto(C1,C2) :- nextto(C1,_,C2).
+
+% triplet is three connected cells
+triplet(C1,C2,C3) :- rebuild_alt(C1,C2,C3).
+
+alt_step(0..S) :- maxsteps(S).
+at(C1,C2,C3,C1,0) :- triplet(C1,C2,C3).
+
+1 {at(C1,C2,C3,C,S) : alt_step(S)} 1 :- at(C1,C2,C3,C',S-1), nextto(C',C), C!=C1, C!=C2, C'!=C3, S>0,
+                %not position(shelf(_),C,_),
+                #false : at(C1,C2,C3,C'',S), C''!=C.%;
+%1 {at(C1,C2,C3,C,S) : alt_step(S)} 1 :- at(C1,C2,C3,C',S-1), nextto(C',C), C!=C1, C!=C2, C'!=C3.
+                %#false : at(C1,C2,C3,C'',S), C''!=C.
+
+
+%{at(C1,C2,C3,C,S)} :- at(C1,C2,C3,C',S-1), nextto(C',C), alt_step(S), alt_step(S'),
+%                    C!=C1, C!=C2, C'!=C3, %not position(shelf(_),C,0),
+%                    #false : at(C1,C2,C3,C'',S), C''!=C;
+%                    #false : at(C1,C2,C3,C,S'), S'<S.%, at(C1,C2,C3,C,S'), S!=S', C!=C1, C!=C2.
+% for the 1st step of alt path
+%{at(C1,C2,C3,C,S)} :- at(C1,C2,C3,C',S-1), nextto(C',C), alt_step(S),
+%                    C!=C1, C!=C2, C'!=C3, %not position(shelf(_),C,0),
+%                    #false : at(C1,C2,C3,C,S'), S'=0;
+%                    #false : at(C1,C2,C3,C'',S), C''!=C.%, at(C1,C2,C3,C,S'), S!=S', C!=C1, C!=C2.
+
+%shelved(C1,C2,C3,C,S) :- at(C1,C2,C3,C,S), position(shelf(_),C,0), C!=C3.
+:- at(C1,C2,C3,C,S), position(shelf(_),C,0), C!=C3.
+%num_shelved(N) :- N = #count{C1,C2,C3,C : shelved(C1,C2,C3,C,_)}.
+%:- at(C1,C2,C3,C,_), position(shelf(_),C,0), C!=C3.
+% alt path must end at the last cell of the triplet
+%:- at(C1,C2,C3,C,S), at(C1,C2,C3,C,S'), S'!=S.
+:- triplet(C1,C2,C3), not at(C1,C2,C3,C3,_).
+%:- at(C1,C2,C3,C,S), at(C1,C2,C3,C'',S), C''!=C
+paths_length(S) :- at(_,_,_,_,S).
+
+alt(C1,C2,C3,C,S) :- at(C1,C2,C3,C,S).
+
+%#minimize {N : num_shelved(N)}.
+#minimize { S : paths_length(S) }.
+
+#show.
+#show alt/5.
+%#show shelved/5. 

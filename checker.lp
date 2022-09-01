@@ -1,0 +1,1 @@
+:- position(shelf(R),C,0), not position(robot(R),C,_).

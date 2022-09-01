@@ -1,5 +1,7 @@
-import random
-n=100
-x = random.randint(0,n)
-print(x/2)
-print(int(x/2))
+dicc = {3: 'a', 1 : 'b', 2: 'c'}
+
+keys = list(dicc.keys())
+print(keys)
+keys.sort()
+
+print(keys)

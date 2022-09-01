@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="41e31f20-7282-4b3e-9b40-071be50ad230" name="and-pm">
+        <fileTransfer accessType="SFTP" host="jarvis.ling.uni-potsdam.de" port="45003" sshConfigId="c851ddc7-08c2-4a3d-b3b3-ae2e8523300d" sshConfig="acordova@jarvis.ling.uni-potsdam.de:45003 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

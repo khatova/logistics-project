@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os, sys, getopt, argparse
-from utils import aesthetic, visualize
+from utils import aesthetic, visualize,run_cmd
 
 def run(directory, output_plan,action,merger,conflicts_detector, independencies_solution,input_parser,output_format):
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
@@ -32,13 +32,7 @@ def run(directory, output_plan,action,merger,conflicts_detector, independencies_
         command += input_parser + " " + merger + " " + action + " " + conflicts_detector + " " +independencies_solution +" "+ output_format + " > " + output_plan
         #command += input_parser + " " + action +" " + output_format + "" +" > " + output_plan
         print("Command: {}".format(command))
-
-        stream = os.popen(command)
-        output = stream.read()
-        if output == "" or output == None:
-            print("Command runned without output")
-        else:
-            print("Command runned with output... : {}".format(output))
+        run_cmd(command)
 
 
 def main(argv):
