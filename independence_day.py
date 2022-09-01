@@ -3,14 +3,14 @@
 import os, sys, re, getopt, argparse
 from utils import aesthetic, run_cmd
 
-def run(directory, output):
+def run(directory, output, horizon=15):
     dirs = [x.name for x in os.scandir("plans") if x.is_dir()]
     if directory not in dirs:
         print("Directory not found. Please select one of these options: ")
         print(dirs)
         sys.exit(0)
     else:
-        command = "clingo --out-atomf='%s.' -V0 -c horizon=15 "
+        command = "clingo --out-atomf='%s.' -V0 -c horizon={} ".format(horizon)
         path = os.path.join("plans/",directory)
         files = os.listdir(path)
         stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store','bucket']
@@ -40,7 +40,7 @@ def cluster(path):
 
     print("Conflicted robots {}".format(conflicted_robots))
 
-    stopwords = ['solution', 'cluster', 'illegal', 'reserve', 'merger', '.DS_Store','bucket']
+    stopwords = ['solution', 'cluster', 'illegal', 'reserve', 'merger', '.DS_Store','bucket','.png','debug']
     for f in files:
         if any(sw in f for sw in stopwords):
             continue
@@ -70,12 +70,12 @@ def empty_cluster(path):
         cmd = "move {} {}".format(temp, path)
         run_cmd(cmd)
 
-def pipeline(directory):
+def pipeline(directory,horizon=15):
     path = os.path.join("plans", directory)
     output = os.path.join(path, directory + "_independencies_solution.lp")
     if os.path.isdir(os.path.join(path,'cluster')):
         empty_cluster(path)
-    run(directory, output)
+    run(directory, output, horizon)
     aesthetic(output)
     illegal_table(output, path)
     cluster(path)
@@ -84,8 +84,8 @@ def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
 
     directory = 'original'
-
-    help_line = 'independence_day.py -d <directory>'
+    horizon = 15
+    help_line = 'independence_day.py -d <directory> -z <horizon>'
 
     try:
         opts, args = getopt.getopt(argv,"h:d:")
@@ -98,12 +98,14 @@ def main(argv):
             sys.exit()
         elif opt == '-d':
             directory = arg
+        elif opt == '-z':
+            horizon = arg
     path = os.path.join("plans", directory)
     output = os.path.join(path, directory + "_independencies_solution.lp")
     print("Directory: {}".format(directory))
     print("Output: {}".format(output))
 
-    pipeline(directory)
+    pipeline(directory,horizon)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
