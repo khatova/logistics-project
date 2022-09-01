@@ -86,7 +86,7 @@ def main(argv):
     out_file = os.path.join(work_dir, "out_occurs.lp")
     #asprilo_input_file = os.path.join(asprilo_encodings_dir, "input.lp")
 
-    input_plans = os.path.join(work_dir, "merged_plans.lp")
+    input_plans = os.path.join(work_dir, "30_merged_plans.lp")
 
     lp_files = [asp_file, alt_file, input_plans]
 

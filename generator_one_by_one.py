@@ -126,9 +126,9 @@ def main(argv):
         file.writelines(nodes_to_delete)
         aesthetic(os.path.join(path,'reserve_nodes.lp'))
     delete_instances(path=path)
-    merge_plans(directory=path,output_name='merged_plans.lp')
+    merge_plans(directory=path,output_name='30_merged_plans.lp')
 
-    visualize(os.path.join(path,'merged_plans.lp'))
+    visualize(os.path.join(path,'30_merged_plans.lp'))
 
 if __name__ == "__main__":
     main(sys.argv[1:])

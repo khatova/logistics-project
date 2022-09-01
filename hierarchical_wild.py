@@ -323,8 +323,11 @@ def avg_moves_agents(path):
                     steps_dicc[agent] += 1
     for key, value in steps_dicc.items():
         steps += value
-
-    return steps/len(steps_dicc)
+    n = len(steps_dicc)
+    if n == 0:
+        return 0
+    else:
+        return steps / n
 
 def to_log(directory,start_time,duration, avg_steps, total_steps, log_file = 'log_file.json', method = 'hierarchical'):
     log_dicc = {"directory": directory, "timestamp": start_time.strftime("%Y.%m.%d %H:%M:%S"), "enabled_time": duration,
@@ -366,7 +369,7 @@ def main(argv):
     start_time = datetime.now()
     path = os.path.join("plans/", directory)
     temporal_plan = os.path.join(path, 'temp_plans_solution.lp')
-    output_plan = os.path.join(path, 'merged_plans.lp')
+    output_plan = os.path.join(path, '30_merged_plans.lp')
     new_moves_table = os.path.join(path, 'new_moves_table.lp')
     bucket = os.path.join(path, 'bucket')
     print("Directory: {}".format(directory))
@@ -376,7 +379,7 @@ def main(argv):
         os.makedirs(bucket)
     else:
         clean_bucket(directory)
-    pipeline(directory)
+    pipeline(directory,horizon)
     delete_file(temporal_plan)
     delete_file(output_plan)
     delete_file(new_moves_table)

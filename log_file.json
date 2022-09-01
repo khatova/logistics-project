@@ -16,6 +16,10 @@
         "{\"directory\": \"24_dense\", \"timestamp\": \"2022.09.01 20:42:26\", \"enabled_time\": 11.015865, \"avg_steps\": 9.916666666666666, \"total_steps\": 238, \"method\": \"hierarchical\"}",
         "{\"directory\": \"24_dense\", \"timestamp\": \"2022.09.01 21:26:12\", \"enabled_time\": 17.120462, \"avg_steps\": 10.25, \"total_steps\": 246, \"method\": \"hierarchical\"}",
         "{\"directory\": \"24_dense\", \"timestamp\": \"2022.09.01 21:29:35\", \"enabled_time\": 17.631202, \"avg_steps\": 10.333333333333334, \"total_steps\": 248, \"method\": \"hierarchical\"}",
-        "{\"directory\": \"26_dense\", \"timestamp\": \"2022.09.01 21:36:38\", \"enabled_time\": 41.168772, \"avg_steps\": 11.192307692307692, \"total_steps\": 291, \"method\": \"hierarchical\"}"
+        "{\"directory\": \"26_dense\", \"timestamp\": \"2022.09.01 21:36:38\", \"enabled_time\": 41.168772, \"avg_steps\": 11.192307692307692, \"total_steps\": 291, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"separable\", \"timestamp\": \"2022.09.01 21:57:32\", \"enabled_time\": 0.531126, \"avg_steps\": 0, \"total_steps\": 0, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"separable\", \"timestamp\": \"2022.09.01 22:02:25\", \"enabled_time\": 0.906037, \"avg_steps\": 0, \"total_steps\": 0, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"50_dense\", \"timestamp\": \"2022.09.01 22:10:11\", \"enabled_time\": 1523.085722, \"avg_steps\": 21.92, \"total_steps\": 1096, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"30_dense\", \"timestamp\": \"2022.09.01 22:56:10\", \"enabled_time\": 35.854488, \"avg_steps\": 10.3, \"total_steps\": 309, \"method\": \"hierarchical\"}"
     ]
 }

@@ -4,7 +4,7 @@ import argparse
 import getopt
 from utils import aesthetic
 
-def merge_plans(directory, output_name='merged_plans.lp'):
+def merge_plans(directory, output_name='30_merged_plans.lp'):
         rules = []
         files = os.listdir(directory)
         stopwords = ['non','solution', 'cluster', 'merger', '.DS_Store']
@@ -38,7 +38,7 @@ def main(argv):
             directory = arg
     path = os.path.join("plans/", directory)
     files = os.listdir(path)
-    stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store']
+    stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store','cluster','bucket','debug']
     for file in files:
         if any(sw in file for sw in stopwords):
             continue
