@@ -69,7 +69,7 @@ def main(argv):
     out_pos_file = os.path.join(work_dir, "out_pos.lp")
     out_occurs_file = os.path.join(work_dir, "out_occurs.lp")
 
-    input_plans = os.path.join(work_dir, "30_merged_plans.lp")
+    input_plans = os.path.join(work_dir, "merged_plans.lp")
 
     lp_files = [asp_file, alt_file, input_plans]
 

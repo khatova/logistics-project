@@ -4,226 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="last changes2">
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_1.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_10.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_11.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_12.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_13.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_14.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_15.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_16.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_17.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_18.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_19.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_2.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_20.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_21.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_22.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_23.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_24.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_25.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_26.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_27.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_28.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_29.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_3.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_30.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_4.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_5.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_6.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_7.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_8.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/plan_only_9.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_1.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_10.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_11.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_12.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_13.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_14.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_15.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_16.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_17.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_18.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_19.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_2.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_20.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_21.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_22.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_23.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_24.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_25.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_26.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_27.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_28.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_29.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_3.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_30.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_4.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_5.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_6.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_7.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_8.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/INSTANCES_FOR_OTHER_GROUPS/plan_only_9.lp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plans/tests2/instance2.lp" afterDir="false" />
+    <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="instance for other groups 1/2">
+      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/24_merged_plans.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/checker.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_1.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_10.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_11.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_12.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_13.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_14.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_15.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_16.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_17.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_18.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_19.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_2.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_20.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_21.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_22.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_23.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_24.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_3.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_4.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_5.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_6.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_7.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_8.lp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plans/separable/plan_only_9.lp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A_output_to_input.lp" beforeDir="false" afterPath="$PROJECT_DIR$/A_output_to_input.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MAPP_1ss.py" beforeDir="false" afterPath="$PROJECT_DIR$/MAPP_1ss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MAPP_1ss_pos.py" beforeDir="false" afterPath="$PROJECT_DIR$/MAPP_1ss_pos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator_one_by_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator_one_by_one.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator_wild.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator_wild.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hierarchical.py" beforeDir="false" afterPath="$PROJECT_DIR$/hierarchical.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hierarchical_wild.py" beforeDir="false" afterPath="$PROJECT_DIR$/hierarchical_wild.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/independence_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/independence_day.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/log_file.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/merge_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/merge_plans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_1.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_10.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_100.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_11.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_12.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_13.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_14.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_15.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_16.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_17.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_18.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_19.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_2.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_20.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_21.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_22.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_23.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_24.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_25.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_26.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_27.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_28.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_29.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_3.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_30.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_31.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_32.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_33.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_34.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_35.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_36.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_37.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_38.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_39.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_4.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_40.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_41.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_42.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_43.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_44.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_45.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_46.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_47.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_48.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_49.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_5.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_50.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_51.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_52.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_53.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_54.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_55.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_56.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_57.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_58.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_59.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_6.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_60.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_61.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_62.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_63.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_64.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_65.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_66.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_67.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_68.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_69.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_7.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_70.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_71.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_72.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_73.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_74.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_75.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_76.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_77.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_78.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_79.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_8.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_80.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_81.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_82.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_83.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_84.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_85.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_86.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_87.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_88.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_89.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_9.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_90.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_91.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_92.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_93.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_94.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_95.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_96.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_97.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_98.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/instance_nona_99.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/100_dense/plan_only_52.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/100_dense/plan_only_52.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/merged_plans.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/merged_plans.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_1.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/plan_only_1.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_10.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_11.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_12.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_13.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_14.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/plan_only_14.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_15.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/plan_only_15.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_16.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_17.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_18.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/plan_only_18.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_19.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_2.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_20.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_21.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_22.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_23.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_24.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_25.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/plan_only_25.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_26.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_27.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_28.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_29.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_3.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_30.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_31.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_32.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_33.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_34.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_35.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_36.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_37.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_38.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_39.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_4.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/plan_only_4.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_40.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_41.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_42.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_43.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_44.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_45.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_46.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_47.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_48.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_49.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_5.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_50.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_6.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_7.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_8.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/plan_only_8.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/30_dense/plan_only_9.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/30_dense/plan_only_9.lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plans/tests2/instance2.lp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +77,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/plans" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/INSTANCES_FOR_OTHER_GROUPS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -267,11 +86,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans" />
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\INSTANCES_FOR_OTHER_GROUPS" />
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\separable" />
+      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans" />
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project" />
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\plans\competition" />
-      <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\MAPP" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ricoc\PycharmProjects\logistics-project\incremental" />
@@ -473,7 +292,7 @@
       <workItem from="1661599645143" duration="1547000" />
       <workItem from="1661696397616" duration="10165000" />
       <workItem from="1661962594343" duration="767000" />
-      <workItem from="1662046708681" duration="18236000" />
+      <workItem from="1662046708681" duration="20854000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
@@ -524,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661963052482</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="instance for other groups 1/2">
+      <created>1662067870362</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662067870393</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +377,8 @@
     <MESSAGE value="merged changes" />
     <MESSAGE value="last changes" />
     <MESSAGE value="last changes2" />
-    <option name="LAST_COMMIT_MESSAGE" value="last changes2" />
+    <MESSAGE value="instance for other groups 1/2" />
+    <option name="LAST_COMMIT_MESSAGE" value="instance for other groups 1/2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/logistics_project$run_clingo.coverage" NAME="run_clingo Coverage Results" MODIFIED="1652198449344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -4,7 +4,7 @@ import argparse
 import getopt
 from utils import aesthetic
 
-def merge_plans(directory, output_name='30_merged_plans.lp'):
+def merge_plans(directory, output_name='merged_plans.lp'):
         rules = []
         files = os.listdir(directory)
         stopwords = ['non','solution', 'cluster', 'merger', '.DS_Store']
