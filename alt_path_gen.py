@@ -77,7 +77,7 @@ def save_solution(m, solution_lines):
 
 def main(argv):
     work_dir, asp_file = parse_args(argv)
-    merged_file = read_file(os.path.join(work_dir, "empty.lp"))
+    merged_file = read_file("MAPP/30x30_empty.lp")#os.path.join(work_dir, "empty.lp"))
     xmax, ymax = getInstanceSize(merged_file)
     x = 1
     y = 1
@@ -123,7 +123,7 @@ def main(argv):
         if y < ymax:
             y += 1
 
-    out_file = os.path.join(work_dir, "empty_alt_paths.lp")
+    out_file = "MAPP/empty_alt_paths.lp" #os.path.join(work_dir, "empty_alt_paths.lp")
     with open(out_file, "w") as file:
         for line in solution_lines:
             file.write(str(line) + ".\n")
