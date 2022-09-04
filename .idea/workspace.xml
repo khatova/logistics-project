@@ -7,32 +7,6 @@
     <list default="true" id="923e5b5c-cbef-47a7-b6a4-29849c717b4b" name="Default Changelist" comment="change in utils">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/checker.lp" beforeDir="false" afterPath="$PROJECT_DIR$/checker.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generator_one_by_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator_one_by_one.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merge_plans.py" beforeDir="false" afterPath="$PROJECT_DIR$/merge_plans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_1.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_10.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_11.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_12.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_13.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_14.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_15.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_16.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_17.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_18.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_19.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_2.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_20.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_3.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_4.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_5.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_6.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_7.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_8.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/instance_nona_9.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/plan_only_1.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/nonanonymous/plan_only_1.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/plan_only_2.lp" beforeDir="false" afterPath="$PROJECT_DIR$/plans/nonanonymous/plan_only_2.lp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/plan_only_3.lp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plans/nonanonymous/plan_only_4.lp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +264,7 @@
       <workItem from="1661696397616" duration="10165000" />
       <workItem from="1661962594343" duration="767000" />
       <workItem from="1662046708681" duration="18236000" />
-      <workItem from="1662317195405" duration="1200000" />
+      <workItem from="1662317195405" duration="3429000" />
     </task>
     <task id="LOCAL-00001" summary="New version run_clingo with visualizer">
       <created>1652209152029</created>
@@ -375,14 +349,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/MAPP_1ss_pos.py</url>
-          <line>231</line>
+          <line>237</line>
           <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <condition expression="progr_step == 3" language="Python" />
-          <url>file://$PROJECT_DIR$/MAPP_1ss_pos.py</url>
-          <line>90</line>
-          <option name="timeStamp" value="85" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
