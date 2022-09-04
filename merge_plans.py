@@ -7,11 +7,12 @@ from utils import aesthetic
 def merge_plans(directory, output_name='merged_plans.lp'):
         rules = []
         files = os.listdir(directory)
-        stopwords = ['non','solution', 'cluster', 'merger', '.DS_Store']
+        stopwords = ['non','solution', 'cluster', 'merger', '.DS_Store','bucket','debug']
         for file in files:
             if any(sw in file for sw in stopwords):
                 continue
-            print(f'Processing file {file} in folder {directory}')
+            aesthetic(os.path.join(directory, file))
+            #print(f'Merge Plans. Processing file {file} in folder {directory}')
             with open(os.path.join(directory,file), 'r') as f:
                 lines = f.readlines()
                 for line in lines:
@@ -24,6 +25,7 @@ def merge_plans(directory, output_name='merged_plans.lp'):
 def main(argv):
     parser = argparse.ArgumentParser(description='Command runs custom plan merger using clingo')
     help_line = 'merge_plans.py -d <directory>'
+    directory = ''
 
     try:
         opts, args = getopt.getopt(argv,"hd:")
@@ -37,12 +39,6 @@ def main(argv):
         elif opt == '-d':
             directory = arg
     path = os.path.join("plans/", directory)
-    files = os.listdir(path)
-    stopwords = ['solution', 'conflicts', 'cluster', 'merger', '.DS_Store','cluster','bucket','debug']
-    for file in files:
-        if any(sw in file for sw in stopwords):
-            continue
-        aesthetic(os.path.join(path,file))
 
     merge_plans(path)
 

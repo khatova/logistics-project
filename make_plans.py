@@ -12,7 +12,7 @@ def run(instance,output_folder,output_name,horizon):
 
     command = "clingo --out-atomf='%s.' -V0 -c horizon="
     command = command + str(horizon)+" "+action_path+" "+goal_path+" "+out_path +" "+instance+" > "+output_temp
-    print("Command: {}".format(command))
+    #print("Command: {}".format(command))
     run_cmd(command)
 
     with open(output_temp, 'r+') as file:
