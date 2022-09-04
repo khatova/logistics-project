@@ -22,6 +22,7 @@
         "{\"directory\": \"50_dense\", \"timestamp\": \"2022.09.01 22:10:11\", \"enabled_time\": 1523.085722, \"avg_steps\": 21.92, \"total_steps\": 1096, \"method\": \"hierarchical\"}",
         "{\"directory\": \"30_dense\", \"timestamp\": \"2022.09.01 22:56:10\", \"enabled_time\": 35.854488, \"avg_steps\": 10.3, \"total_steps\": 309, \"method\": \"hierarchical\"}",
         "{\"directory\": \"40_dense\", \"timestamp\": \"2022.09.01 23:00:16\", \"enabled_time\": 2316.33881, \"avg_steps\": 15.1, \"total_steps\": 604, \"method\": \"hierarchical\"}",
-        "{\"directory\": \"5x5_dense\", \"timestamp\": \"2022.09.01 23:46:13\", \"enabled_time\": 2.87678, \"avg_steps\": 5.0, \"total_steps\": 50, \"method\": \"hierarchical\"}"
+        "{\"directory\": \"5x5_dense\", \"timestamp\": \"2022.09.01 23:46:13\", \"enabled_time\": 2.87678, \"avg_steps\": 5.0, \"total_steps\": 50, \"method\": \"hierarchical\"}",
+        "{\"directory\": \"Ex_25c_dense\", \"timestamp\": \"2022.09.03 23:05:55\", \"enabled_time\": 1123.381963, \"avg_steps\": 21.36, \"total_steps\": 1068, \"method\": \"hierarchical\"}"
     ]
 }

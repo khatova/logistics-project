@@ -5,9 +5,9 @@ def empty_folder(path):
     for filename in os.listdir(path):
         file_path = os.path.join(path, filename)
         try:
-            if 'merger' in file_path or 'merged' in file_path:
-                continue
-            elif os.path.isfile(file_path) or os.path.islink(file_path):
+            #if 'merger' in file_path or 'merged' in file_path:
+            #    continue
+            if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)

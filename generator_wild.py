@@ -14,7 +14,7 @@ def get_random_tuple(x,y,robot=False):
         j = random.choice([1,y])
     else:
         i = random.randint(1, x)
-        j = random.randint(1, y - 1)
+        j = random.randint(2, y - 1)
     return (i,j)
 
 def rules_generator(x=8,y=8,id_of_agent=1,shelf_cells={}, robot_cells={}):
@@ -44,9 +44,6 @@ def rules_generator(x=8,y=8,id_of_agent=1,shelf_cells={}, robot_cells={}):
     rule6 = Rule('order',count,'line',(id_of_agent,1))
     for ru in [rule1, rule2, rule3,rule4,rule5,rule6]:
         rules.append(ru.to_string())
-
-    #rule = Rule('pickingStation',1,'at',(int((x+1)/2),1))
-    #rules.append(rule.to_string())
 
     return rules, shelf_cells, robot_cells
 
@@ -102,17 +99,8 @@ def main(argv):
         temp_out = os.path.join(path,'instance_nona_'+str(id+1)+'.lp')
         with open(temp_out,'w') as file:
             file.writelines(rules)
-    #print('shelf_cells: ', shelf_cells)
-    #print('robot_cells: ', robot_cells)
-    #deleted_nodes = []
-    for id in range(n_agents):
-        temp_out = os.path.join(path, 'instance_nona_' + str(id + 1) + '.lp')
-        run(temp_out, path, 'plan_only_'+str(id+1), horizon)
-        aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'.lp'))
-    #nodes_to_delete = list(set(deleted_nodes))
-    #with open(os.path.join(path,'reserve_nodes.lp'),'w') as file:
-    #    file.writelines(nodes_to_delete)
-    #    aesthetic(os.path.join(path,'reserve_nodes.lp'))
+        run(temp_out, path, 'plan_only_' + str(id + 1), horizon)
+        aesthetic(os.path.join(path, 'plan_only_' + str(id + 1) + '.lp'))
     delete_instances(path=path)
     merge_plans(directory=path,output_name='merged_plans.lp')
 
