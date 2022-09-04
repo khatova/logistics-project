@@ -1,0 +1,15 @@
+init(object(node,216),value(at,(6, 15))).
+init(object(node,13),value(at,(13, 1))).
+init(object(node,5),value(at,(5, 1))).
+init(object(node,217),value(at,(7, 15))).
+init(object(node,2),value(at,(2, 1))).
+init(object(node,224),value(at,(14, 15))).
+init(object(node,214),value(at,(4, 15))).
+init(object(node,8),value(at,(8, 1))).
+init(object(node,6),value(at,(6, 1))).
+init(object(node,15),value(at,(15, 1))).
+init(object(node,223),value(at,(13, 15))).
+init(object(node,225),value(at,(15, 15))).
+init(object(node,7),value(at,(7, 1))).
+init(object(node,220),value(at,(10, 15))).
+init(object(node,11),value(at,(11, 1))).

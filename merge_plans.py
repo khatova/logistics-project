@@ -7,7 +7,7 @@ from utils import aesthetic
 def merge_plans(directory, output_name='merged_plans.lp'):
         rules = []
         files = os.listdir(directory)
-        stopwords = ['non','solution', 'cluster', 'merger', '.DS_Store','bucket','debug']
+        stopwords = ['non','solution', 'cluster', 'merger', '.DS_Store','bucket','debug','nodes']
         for file in files:
             if any(sw in file for sw in stopwords):
                 continue

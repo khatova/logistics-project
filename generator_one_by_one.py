@@ -14,7 +14,7 @@ def get_random_tuple(x,y,robot=False):
         j = random.choice([1,y])
     else:
         i = random.randint(2, x - 1)
-        j = random.randint(2, y - 2)
+        j = random.randint(2, y - 1)
     return (i,j)
 
 def rules_generator(x=8,y=8,id_of_agent=1,shelf_cells={}, robot_cells={}):
@@ -102,33 +102,30 @@ def main(argv):
         temp_out = os.path.join(path,'instance_nona_'+str(id+1)+'.lp')
         with open(temp_out,'w') as file:
             file.writelines(rules)
-    print('shelf_cells: ', shelf_cells)
-    print('robot_cells: ', robot_cells)
+    #print('shelf_cells: ', shelf_cells)
+    #print('robot_cells: ', robot_cells)
     deleted_nodes = []
     for id in range(n_agents):
         temp_out = os.path.join(path, 'instance_nona_' + str(id + 1) + '.lp')
         for id_sh,(i,j) in shelf_cells.items():
             if (i,j) != shelf_cells[id+1]:
-                #shelf_rule = Rule('node',id_sh,'at',(i,j)).to_string()
-                #print(f'Rule to delete: {shelf_rule} from instance {id+1}')
                 remove_node(temp_out,(i,j))
         for id_r,(i,j) in robot_cells.items():
             if id_r != id+1:
-                robot_rule = Rule('node',id_r,'at',(i,j)).to_string()
-                #print(f'Rule to delete: {robot_rule} from instance {id+1}')
                 removed_nodes = remove_node(temp_out,(i,j))
                 for rn in removed_nodes:
                     deleted_nodes.append(rn)
         run(temp_out, path, 'plan_only_'+str(id+1), horizon)
         aesthetic(os.path.join(path,'plan_only_'+str(id+1)+'.lp'))
     nodes_to_delete = list(set(deleted_nodes))
+    #print("Nodes to delete: {}".format(nodes_to_delete))
     with open(os.path.join(path,'reserve_nodes.lp'),'w') as file:
         file.writelines(nodes_to_delete)
-        aesthetic(os.path.join(path,'reserve_nodes.lp'))
+    #aesthetic(os.path.join(path,'reserve_nodes.lp'))
     delete_instances(path=path)
     merge_plans(directory=path,output_name='merged_plans.lp')
 
-    visualize(os.path.join(path,'merged_plans.lp'))
+    #visualize(os.path.join(path,'merged_plans.lp'))
 
 if __name__ == "__main__":
     main(sys.argv[1:])
