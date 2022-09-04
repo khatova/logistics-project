@@ -13,8 +13,8 @@ def get_random_tuple(x,y,robot=False):
         i = random.randint(1, x)
         j = random.choice([1,y])
     else:
-        i = random.randint(2, x - 1)
-        j = random.randint(2, y - 2)
+        i = random.randint(1, x)
+        j = random.randint(1, y - 1)
     return (i,j)
 
 def rules_generator(x=8,y=8,id_of_agent=1,shelf_cells={}, robot_cells={}):
@@ -114,9 +114,9 @@ def main(argv):
     #    file.writelines(nodes_to_delete)
     #    aesthetic(os.path.join(path,'reserve_nodes.lp'))
     delete_instances(path=path)
-    merge_plans(directory=path,output_name='30_merged_plans.lp')
+    merge_plans(directory=path,output_name='merged_plans.lp')
 
-    visualize(os.path.join(path,'30_merged_plans.lp'))
+    visualize(os.path.join(path,'merged_plans.lp'))
 
 if __name__ == "__main__":
     main(sys.argv[1:])

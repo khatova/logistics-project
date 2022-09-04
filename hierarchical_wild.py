@@ -369,7 +369,7 @@ def main(argv):
     start_time = datetime.now()
     path = os.path.join("plans/", directory)
     temporal_plan = os.path.join(path, 'temp_plans_solution.lp')
-    output_plan = os.path.join(path, '30_merged_plans.lp')
+    output_plan = os.path.join(path, 'merged_plans.lp')
     new_moves_table = os.path.join(path, 'new_moves_table.lp')
     bucket = os.path.join(path, 'bucket')
     print("Directory: {}".format(directory))
