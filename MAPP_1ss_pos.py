@@ -12,15 +12,16 @@ from clingo.symbol import Number, Function
 ps_solved = False
 active_robots = []
 prev_ps_model = []
+debug = True
 
 
 def parse_args(argv):
     parser = argparse.ArgumentParser(description='Command runs MAPP merger using clingo')
 
     help_line = "MAPP.py -i <input_folder> -a <encoding.lp>"
-    directory = "B_10x10_1"
+    #directory = "Sx_10a_dense"
     #directory = "12x12_dense"
-    #directory = "MAPP20x20"
+    directory = "MAPP20x20"
     #directory = "cat"
     asp_file = "MAPP/mapp_merger_1ss_pos.lp"
     show_file = "MAPP/MAPP_output.lp"
@@ -106,7 +107,7 @@ def progression_step(progr_step, ctl, parts):
         #ctl.solve(on_model=lambda model: on_model(model, progr_step, substep))
         with ctl.solve(yield_=True) as handle:
             models = list(iter(handle))
-            if len(models) > 0:
+            if len(models) == 1:
                 m = models[-1]
                 on_model(m, progr_step, substep)
             else:
@@ -116,7 +117,7 @@ def progression_step(progr_step, ctl, parts):
         #    ps_solved = True
         #    break
 
-    return not failed
+    return (not failed) and ps_solved
 
 
 def prepareAltPaths(inputs_str, empty_alt_file):
@@ -164,6 +165,11 @@ def prepareAltPaths(inputs_str, empty_alt_file):
 
     print("Alt paths:")
     print(good_alt_str)
+
+    #if debug:
+    #    with open("plans/B_10x10_1/alt_paths_debug.lp", "w") as file:
+    #        file.write(str(good_alt_str))
+
     return good_alt_str
 
 
