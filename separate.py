@@ -38,7 +38,7 @@ def main(argv):
     if len(instance) == 0:
         print(help_line)
     else:
-        empty_folder(out_folder)
+        #empty_folder(out_folder)
         aesthetic(instance)
         common_lines = []
         lines = read_file(instance)

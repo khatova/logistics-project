@@ -3,31 +3,22 @@
 import os, sys, getopt, argparse
 from utils import aesthetic, visualize, run_cmd
 
-def run(instance,output_folder,output_name,horizon):
+def run(instance,output_path,horizon):
     action_path = "asprilo-encodings/m/action-M-no-constraints.lp"
     goal_path = "asprilo-encodings/m/goal-M.lp"
     out_path = "asprilo-encodings/m/output-M.lp"
-    output_temp = os.path.join(output_folder, output_name + '.lp')
     # TODO: mkdir
 
     command = "clingo --out-atomf='%s.' -V0 -c horizon="
-    command = command + str(horizon)+" "+action_path+" "+goal_path+" "+out_path +" "+instance+" > "+output_temp
-    print("Command: {}".format(command))
+    command = command + str(horizon)+" "+action_path+" "+goal_path+" "+out_path +" "+instance+" > "+output_path
+    #print("Command: {}".format(command))
     run_cmd(command)
 
-    with open(output_temp, 'r+') as file:
-        lines = file.readlines()
-    with open(output_temp, "w") as file:
-        for line in lines:
-            rules = line.split()
-            for rule in rules:
-                rule = rule.replace("'","")
-                file.write(rule + "\n")
 
 def main(argv):
     parser = argparse.ArgumentParser(description='Command creates separate robot plans for a given instance.')
 
-    help_line = "make_original_plans.py -i <input_instance> -o <output_folder> -n <output_name> --horizon <horizon>"
+    help_line = "make_plans.py -i <input_instance> -o <output_folder> -n <output_name> --horizon <horizon>"
 
     instance = ""
     output_folder = ""
@@ -52,10 +43,11 @@ def main(argv):
         elif opt == "--horizon":
             horizon = arg
 
-    run(instance,output_folder,output_name,horizon)
-    output = os.path.join(output_folder, output_name + '_conflicts.lp')
-    aesthetic(output)
-    visualize(output)
+    output_name = instance.replace(".lp", "_solution.lp")
+    #output_path = os.path.join(output_folder, output_name)
+    run(instance,output_name,horizon)
+    aesthetic(output_name)
+    visualize(output_name)
 
 
 if __name__ == "__main__":

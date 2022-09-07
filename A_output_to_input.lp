@@ -1,6 +1,6 @@
 #include "asprilo-encodings/input.lp".
 
-time(1..15). % output time
+time(1..500). % output time
 time_(T) :- occurs(_,_,T). % input time
 
 % translates occurs into position and move

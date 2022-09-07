@@ -224,7 +224,7 @@ def plan_to_temp(plan,temp):
 def run_hierarchical_clingo(up_plan, illegal, encoding, last_time, new_plan,horizon):
     command = "clingo --out-atomf='%s.' -V0 -c horizon={} -c lasttime=".format(horizon)
     command += last_time + " " + up_plan + " " + illegal + " " + encoding + " > " + new_plan
-    #print("Run Hierarchical " + command)
+    print("Run Hierarchical " + command)
     run_cmd(command)
     aesthetic(new_plan)
 
@@ -286,7 +286,7 @@ def clean(directory):
     path = os.path.join("plans", directory)
     print(f'Path to clean: {path}')
     files = os.listdir(path)
-    delete_words = ['illegal', 'merged_plans', 'new_moves', 'occurs', 'temp', 'independencies']
+    delete_words = ['illegal', 'merged_plans', 'new_moves', 'occurs', 'temp', 'independencies', 'evaluation', 'out_pos']#,'reserve']
     for file in files:
         if any(sw in file for sw in delete_words):
             delete_file(os.path.join(path, file))
@@ -331,7 +331,7 @@ def avg_moves_agents(path):
 
 def to_log(directory,start_time,duration, avg_steps, total_steps, log_file = 'log_file.json', method = 'hierarchical'):
     log_dicc = {"directory": directory, "timestamp": start_time.strftime("%Y.%m.%d %H:%M:%S"), "enabled_time": duration,
-                "avg_steps" : avg_steps, "total_steps": total_steps, "method":method}
+                "total_steps": total_steps, "avg_steps" : avg_steps,  "method":method}
     log_json = json.dumps(log_dicc)
     print("Results: {}".format(log_dicc))
     if not exists(log_file):
