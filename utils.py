@@ -18,7 +18,7 @@ def delete_file(file_path):
     if os.path.isfile(file_path) or os.path.islink(file_path):
         os.unlink(file_path)
 
-def aesthetic(location):
+def aesthetic(location, ignore = 0):
     with open(location, 'r') as file:
         lines = file.readlines()
         if 'SATISFIABLE' in lines:
@@ -26,7 +26,11 @@ def aesthetic(location):
         elif 'SATISFIABLE\n' in lines:
             lines.remove('SATISFIABLE\n')
     with open(location, "w") as file:
+        count = 0
         for line in lines:
+            count += 1
+            if count <= ignore:
+                continue
             rules = line.split()
             for rule in rules:
                 rule = rule.replace("'","")

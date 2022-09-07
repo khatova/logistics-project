@@ -195,7 +195,7 @@ def plan_to_temp(plan,temp):
 def run_hierarchical_clingo(up_plan, illegal, encoding, last_time, new_plan,horizon):
     command = "clingo --out-atomf='%s.' -V0 -c horizon={} -c lasttime=".format(horizon)
     command += last_time + " " + up_plan + " " + illegal + " " + encoding + " > " + new_plan
-    #print("Run Hierarchical " + command)
+    print("Run Hierarchical " + command)
     run_cmd(command)
     aesthetic(new_plan)
 

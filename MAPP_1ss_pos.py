@@ -50,8 +50,8 @@ def run_command(command):
     output = stream.read()
     if output == "" or output is None:
         print("Command runned without output")
-    else:
-        print("Command runned with output... : {}".format(output))
+    #else:
+        #print("Command runned with output... : {}".format(output))
 
 
 def save_ps(m, progr_step):
@@ -73,7 +73,7 @@ def save_ps(m, progr_step):
 
 
 def on_model(m, progr_step, sub_step):
-    print("ps={}, ss={}".format(progr_step, sub_step))
+    #print("ps={}, ss={}".format(progr_step, sub_step))
     global ps_solved
     global active_robots
     global prev_ps_model
@@ -85,15 +85,16 @@ def on_model(m, progr_step, sub_step):
                 ps_solved = True
                 save_ps(m,progr_step)
 
-    print(m)
+
+    #print(m)
 
 
 def progression_step(progr_step, ctl, parts):
     parts.append(("pstep", [Number(progr_step)]))
     parts.append(("sstep", [Number(progr_step), Number(0)]))
     ctl.ground(parts)
-    print("ps={}, ss=0".format(progr_step))
-    ctl.solve(on_model=print)
+    #print("ps={}, ss=0".format(progr_step))
+    ctl.solve()#on_model=print)
 
     global ps_solved
     ps_solved = False
@@ -103,7 +104,7 @@ def progression_step(progr_step, ctl, parts):
         parts.remove(("sstep", [Number(progr_step), Number(substep-1)]))
         parts.append(("sstep", [Number(progr_step), Number(substep)]))
         ctl.ground(parts)
-        print(substep)
+        #print(substep)
         #ctl.solve(on_model=lambda model: on_model(model, progr_step, substep))
         with ctl.solve(yield_=True) as handle:
             models = list(iter(handle))
@@ -144,10 +145,10 @@ def prepareAltPaths(inputs_str, empty_alt_file):
                     alt = Function("alt", arguments=symbol.arguments)
                     good_alt_str += str(alt) + ". "
 
-    print("Bad triplets: ")
-    print(bad_triplets)
-    print("Ok triplets: ")
-    print(good_alt_str)
+    #print("Bad triplets: ")
+    #print(bad_triplets)
+    #print("Ok triplets: ")
+    #print(good_alt_str)
 
     ctl = Control(arguments=["--opt-mode=opt"])
     ctl.load(fix_alt_file)
@@ -163,8 +164,8 @@ def prepareAltPaths(inputs_str, empty_alt_file):
             for symbol in m.symbols(shown=True):
                 good_alt_str += str(symbol) + ". "
 
-    print("Alt paths:")
-    print(good_alt_str)
+    #print("Alt paths:")
+    #print(good_alt_str)
 
     #if debug:
     #    with open("plans/B_10x10_1/alt_paths_debug.lp", "w") as file:
@@ -215,7 +216,7 @@ def main(argv):
     new_ps_input = []
     out_pos = []
     for progr_step in range(num_robots):
-        print("Progression step: {}".format(progr_step))
+        #print("Progression step: {}".format(progr_step))
         ctl = Control()
         ctl.load(asp_file)
         ctl.add("base", [], inputs_str)
@@ -229,7 +230,7 @@ def main(argv):
         ctl.ground(parts)
 
         if len(active_robots) == 0:
-            print("No active robots at progression step {ps}. Preparing output...".format(ps=progr_step))
+            #print("No active robots at progression step {ps}. Preparing output...".format(ps=progr_step))
             break
 
         prev_ps_model = []
